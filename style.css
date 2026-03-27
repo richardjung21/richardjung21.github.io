@@ -216,6 +216,32 @@ a:hover { text-decoration: underline; }
   font-size: 11px;
 }
 
+/* ── Skills ─────────────────────────────────────────── */
+.skills-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.skills-group-label {
+  color: var(--text-muted);
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--accent-mid);
+  padding: 4px 12px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
 /* ── Mobile ─────────────────────────────────────────── */
 @media (max-width: 768px) {
   .hamburger { display: flex; }
