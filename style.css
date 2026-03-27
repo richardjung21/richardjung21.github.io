@@ -242,6 +242,84 @@ a:hover { text-decoration: underline; }
   font-size: 11px;
 }
 
+/* ── Experience ─────────────────────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.timeline-item {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 28px;
+  position: relative;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 100px;
+  top: 6px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+.timeline-item:last-child::before { display: none; }
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 96px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+}
+.timeline-meta {
+  width: 96px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 2px;
+}
+.timeline-date {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+.timeline-badge {
+  font-size: 8px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  align-self: flex-end;
+}
+.timeline-badge.current {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--accent-mid);
+}
+.timeline-body { padding-left: 20px; }
+.timeline-title {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.timeline-org {
+  color: var(--accent);
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+.timeline-desc {
+  color: var(--text-sec);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
 /* ── Mobile ─────────────────────────────────────────── */
 @media (max-width: 768px) {
   .hamburger { display: flex; }
