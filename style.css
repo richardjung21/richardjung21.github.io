@@ -10,17 +10,22 @@
   --text-sec:   #aaaaaa;
   --text-muted: #555555;
   --font:       'Courier New', Courier, monospace;
-  --sidebar-w:  220px;
+  --sidebar-w:  clamp(220px, 16vw, 300px);
 }
 
 /* ── Reset ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+
+/* Base font scales with viewport: 14px at 1400px, ~18px at 1920px, capped at 22px */
+html {
+  font-size: clamp(14px, 1vw, 22px);
+  scroll-behavior: smooth;
+}
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.6;
 }
 a { color: var(--accent); text-decoration: none; }
@@ -44,7 +49,7 @@ a:hover { text-decoration: underline; }
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  padding: 28px 18px;
+  padding: clamp(20px, 2vw, 36px) clamp(14px, 1.4vw, 24px);
   gap: 4px;
   z-index: 100;
   transition: none;
@@ -53,8 +58,7 @@ a:hover { text-decoration: underline; }
 .content {
   margin-left: var(--sidebar-w);
   flex: 1;
-  padding: 48px 52px;
-  max-width: calc(860px + var(--sidebar-w));
+  padding: clamp(32px, 4vw, 72px) clamp(32px, 5vw, 80px);
 }
 
 /* ── Hamburger (hidden on desktop) ─────────────────── */
@@ -87,34 +91,34 @@ a:hover { text-decoration: underline; }
 /* ── Sidebar internals ──────────────────────────────── */
 .sidebar-profile {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 1.6rem;
 }
 .profile-photo {
-  width: 80px;
-  height: 80px;
+  width: clamp(70px, 5.5vw, 100px);
+  height: clamp(70px, 5.5vw, 100px);
   border-radius: 50%;
   border: 2px solid var(--accent);
   object-fit: cover;
   display: block;
-  margin: 0 auto 10px;
+  margin: 0 auto 0.7rem;
 }
 .profile-name {
   color: var(--text);
-  font-size: 13px;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 .profile-title {
   color: var(--accent);
-  font-size: 10px;
+  font-size: 0.7rem;
   margin-top: 3px;
   letter-spacing: 0.5px;
 }
 
 .sidebar-label {
   color: var(--text-muted);
-  font-size: 9px;
+  font-size: 0.65rem;
   letter-spacing: 2px;
-  margin: 12px 0 6px;
+  margin: 0.85rem 0 0.4rem;
 }
 
 .sidebar-nav {
@@ -124,8 +128,8 @@ a:hover { text-decoration: underline; }
 }
 .nav-link {
   color: var(--text-muted);
-  font-size: 11px;
-  padding: 6px 10px;
+  font-size: 0.77rem;
+  padding: 0.4rem 0.65rem;
   border-radius: 3px;
   border-left: 2px solid transparent;
   transition: color 0.15s, background 0.15s;
@@ -139,66 +143,66 @@ a:hover { text-decoration: underline; }
 
 .sidebar-links {
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 1rem;
   border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.4rem;
 }
 .social-link {
   color: var(--accent);
-  font-size: 11px;
+  font-size: 0.77rem;
 }
 .social-link:hover { text-decoration: underline; }
 
 /* ── Section base ───────────────────────────────────── */
 .section {
-  margin-bottom: 60px;
-  scroll-margin-top: 32px;
+  margin-bottom: clamp(48px, 5vw, 80px);
+  scroll-margin-top: 2rem;
 }
 .section-header {
   color: var(--text-muted);
-  font-size: 10px;
+  font-size: 0.7rem;
   letter-spacing: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 1.4rem;
 }
 
 /* ── About ──────────────────────────────────────────── */
 .about-grid {
   display: flex;
-  gap: 28px;
+  gap: 2rem;
   align-items: flex-start;
 }
 .about-text { flex: 1; }
 .about-photo {
-  width: 100px;
-  height: 100px;
+  width: clamp(90px, 7vw, 140px);
+  height: clamp(90px, 7vw, 140px);
   border-radius: 8px;
   border: 1px solid var(--border);
   object-fit: cover;
   flex-shrink: 0;
 }
 .about-name {
-  font-size: 28px;
+  font-size: clamp(1.6rem, 2.2vw, 2.4rem);
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 4px;
+  margin-bottom: 0.3rem;
 }
 .about-subtitle {
   color: var(--accent);
-  font-size: 12px;
-  margin-bottom: 14px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
 }
 .about-bio {
   color: var(--text-sec);
-  font-size: 13px;
+  font-size: 0.93rem;
   line-height: 1.8;
-  margin-bottom: 20px;
+  margin-bottom: 1.4rem;
 }
 .about-meta {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.85rem;
 }
 .about-meta-group {
   display: flex;
@@ -207,39 +211,39 @@ a:hover { text-decoration: underline; }
 }
 .meta-label {
   color: var(--text-muted);
-  font-size: 9px;
+  font-size: 0.65rem;
   letter-spacing: 2px;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 .meta-value {
   color: var(--text-sec);
-  font-size: 11px;
+  font-size: 0.77rem;
 }
 
 /* ── Skills ─────────────────────────────────────────── */
 .skills-groups {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1.1rem;
 }
 .skills-group-label {
   color: var(--text-muted);
-  font-size: 9px;
+  font-size: 0.65rem;
   letter-spacing: 2px;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 .skills-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.55rem;
 }
 .tag {
   background: var(--accent-dim);
   color: var(--accent);
   border: 1px solid var(--accent-mid);
-  padding: 4px 12px;
+  padding: 0.25rem 0.75rem;
   border-radius: 3px;
-  font-size: 11px;
+  font-size: 0.77rem;
 }
 
 /* ── Experience ─────────────────────────────────────── */
@@ -250,8 +254,8 @@ a:hover { text-decoration: underline; }
 }
 .timeline-item {
   display: flex;
-  gap: 20px;
-  padding-bottom: 28px;
+  gap: 1.4rem;
+  padding-bottom: 2rem;
   position: relative;
 }
 .timeline-item::before {
@@ -279,7 +283,7 @@ a:hover { text-decoration: underline; }
   width: 96px;
   flex-shrink: 0;
   text-align: right;
-  padding-right: 24px;
+  padding-right: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -287,10 +291,10 @@ a:hover { text-decoration: underline; }
 }
 .timeline-date {
   color: var(--text-muted);
-  font-size: 10px;
+  font-size: 0.7rem;
 }
 .timeline-badge {
-  font-size: 8px;
+  font-size: 0.55rem;
   padding: 2px 6px;
   border-radius: 10px;
   letter-spacing: 1px;
@@ -302,21 +306,21 @@ a:hover { text-decoration: underline; }
   color: var(--accent);
   border: 1px solid var(--accent-mid);
 }
-.timeline-body { padding-left: 20px; }
+.timeline-body { padding-left: 1.4rem; }
 .timeline-title {
   color: var(--text);
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 700;
   margin-bottom: 2px;
 }
 .timeline-org {
   color: var(--accent);
-  font-size: 11px;
-  margin-bottom: 6px;
+  font-size: 0.77rem;
+  margin-bottom: 0.4rem;
 }
 .timeline-desc {
   color: var(--text-sec);
-  font-size: 12px;
+  font-size: 0.85rem;
   line-height: 1.7;
 }
 
@@ -324,10 +328,10 @@ a:hover { text-decoration: underline; }
 .pub-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.4rem;
 }
 .pub-item {
-  padding: 14px 16px;
+  padding: 1rem 1.1rem;
   border-left: 3px solid var(--border);
   border-radius: 0 4px 4px 0;
 }
@@ -341,39 +345,39 @@ a:hover { text-decoration: underline; }
 }
 .pub-venue {
   color: var(--accent);
-  font-size: 10px;
+  font-size: 0.7rem;
   letter-spacing: 1px;
-  margin-bottom: 6px;
+  margin-bottom: 0.4rem;
 }
 .pub-upcoming .pub-venue {
   color: var(--text-muted);
 }
 .pub-title {
   color: var(--text);
-  font-size: 13px;
+  font-size: 0.93rem;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
   line-height: 1.5;
 }
 .pub-authors {
   color: var(--text-muted);
-  font-size: 11px;
+  font-size: 0.77rem;
 }
 
 /* ── Projects ───────────────────────────────────────── */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(260px, 22vw, 360px), 1fr));
+  gap: 1.1rem;
 }
 .project-card {
   background: var(--bg-sidebar);
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 18px;
+  padding: 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.65rem;
   transition: border-color 0.2s;
 }
 .project-card:hover { border-color: var(--accent-mid); }
@@ -381,55 +385,55 @@ a:hover { text-decoration: underline; }
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.5rem;
 }
 .project-title {
   color: var(--text);
-  font-size: 13px;
+  font-size: 0.93rem;
   font-weight: 700;
   line-height: 1.4;
 }
 .project-date {
   color: var(--text-muted);
-  font-size: 10px;
+  font-size: 0.7rem;
   flex-shrink: 0;
 }
 .project-desc {
   color: var(--text-sec);
-  font-size: 11px;
+  font-size: 0.77rem;
   line-height: 1.7;
   flex: 1;
 }
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 0.4rem;
 }
 
 /* ── Contact ────────────────────────────────────────── */
 .contact-tagline {
   color: var(--text-sec);
-  font-size: 13px;
-  margin-bottom: 20px;
+  font-size: 0.93rem;
+  margin-bottom: 1.4rem;
 }
 .contact-links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.85rem;
 }
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.85rem;
   color: var(--text-sec);
-  font-size: 13px;
+  font-size: 0.93rem;
   transition: color 0.15s;
 }
 .contact-item:hover { color: var(--accent); text-decoration: none; }
 .contact-icon {
   color: var(--accent);
-  font-size: 14px;
-  width: 20px;
+  font-size: 1rem;
+  width: 1.4rem;
   text-align: center;
 }
 
