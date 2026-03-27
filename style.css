@@ -609,6 +609,45 @@ img {
   font-size: 0.64rem;
 }
 
+.lang-scores {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.lang-score-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--surface-up);
+}
+
+.lang-score-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.lang-score-value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--blue-bright);
+}
+
+.lang-score-max {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
 .about-photo-col {
   position: sticky;
   top: calc(var(--nav-h) + 24px);
