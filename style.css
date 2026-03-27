@@ -320,6 +320,46 @@ a:hover { text-decoration: underline; }
   line-height: 1.7;
 }
 
+/* ── Publications ───────────────────────────────────── */
+.pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pub-item {
+  padding: 14px 16px;
+  border-left: 3px solid var(--border);
+  border-radius: 0 4px 4px 0;
+}
+.pub-published {
+  border-left-color: var(--accent);
+  background: var(--accent-dim);
+}
+.pub-upcoming {
+  border-left-color: var(--border);
+  opacity: 0.5;
+}
+.pub-venue {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.pub-upcoming .pub-venue {
+  color: var(--text-muted);
+}
+.pub-title {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+.pub-authors {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
 /* ── Mobile ─────────────────────────────────────────── */
 @media (max-width: 768px) {
   .hamburger { display: flex; }
