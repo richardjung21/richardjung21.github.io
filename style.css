@@ -10,15 +10,15 @@
   --text-sec:   #aaaaaa;
   --text-muted: #555555;
   --font:       'Courier New', Courier, monospace;
-  --sidebar-w:  clamp(220px, 16vw, 300px);
+  --sidebar-w:  clamp(240px, 18vw, 360px);
 }
 
 /* ── Reset ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Base font scales with viewport: 14px at 1400px, ~18px at 1920px, capped at 22px */
+/* Base font scales with viewport: 16px at 1400px, ~25px at 1920px, capped at 28px */
 html {
-  font-size: clamp(14px, 1vw, 22px);
+  font-size: clamp(16px, 1.3vw, 28px);
   scroll-behavior: smooth;
 }
 body {
@@ -94,8 +94,8 @@ a:hover { text-decoration: underline; }
   margin-bottom: 1.6rem;
 }
 .profile-photo {
-  width: clamp(70px, 5.5vw, 100px);
-  height: clamp(70px, 5.5vw, 100px);
+  width: clamp(80px, 7vw, 130px);
+  height: clamp(80px, 7vw, 130px);
   border-radius: 50%;
   border: 2px solid var(--accent);
   object-fit: cover;
@@ -175,15 +175,15 @@ a:hover { text-decoration: underline; }
 }
 .about-text { flex: 1; }
 .about-photo {
-  width: clamp(90px, 7vw, 140px);
-  height: clamp(90px, 7vw, 140px);
+  width: clamp(110px, 9vw, 180px);
+  height: clamp(110px, 9vw, 180px);
   border-radius: 8px;
   border: 1px solid var(--border);
   object-fit: cover;
   flex-shrink: 0;
 }
 .about-name {
-  font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+  font-size: clamp(1.8rem, 2.5vw, 2.8rem);
   font-weight: 700;
   color: var(--text);
   margin-bottom: 0.3rem;
@@ -367,7 +367,7 @@ a:hover { text-decoration: underline; }
 /* ── Projects ───────────────────────────────────────── */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(clamp(260px, 22vw, 360px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(clamp(280px, 25vw, 420px), 1fr));
   gap: 1.1rem;
 }
 .project-card {
