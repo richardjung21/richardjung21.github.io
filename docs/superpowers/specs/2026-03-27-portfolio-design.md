@@ -50,6 +50,7 @@ Sections stack vertically. Smooth scroll on nav click. Scroll spy updates active
 - Profile photo (inline, right-aligned) + name + subtitle
 - Short bio paragraph: MS candidate at SKKU, specializing in Generative Models (Diffusion Models), Computer Vision (Image Segmentation, Representation Learning), and Medical Image Analysis. Currently a Graduate Researcher at Crescom and freelance web developer. Native English speaker. 2 publications, 3rd upcoming.
 - Education badges: SKKU MS ECE (2025–present, GPA 4.33/4.5), SKKU BS EE (2019–2025, GPA 3.46/4.5)
+- Languages: English (Fluent), Korean (Fluent), Mandarin Chinese (Conversational), Tagalog (Conversational)
 
 ### `// SKILLS`
 Green pill-style tags grouped into categories:
