@@ -47,13 +47,14 @@ a:hover { text-decoration: underline; }
   padding: 28px 18px;
   gap: 4px;
   z-index: 100;
+  transition: none;
 }
 
 .content {
   margin-left: var(--sidebar-w);
   flex: 1;
   padding: 48px 52px;
-  max-width: 860px;
+  max-width: calc(860px + var(--sidebar-w));
 }
 
 /* ── Hamburger (hidden on desktop) ─────────────────── */
