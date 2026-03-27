@@ -5,398 +5,292 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Seungho Jung — ML Researcher and Software Engineer. MS candidate at SKKU specializing in Generative Models and Computer Vision.">
   <meta property="og:title" content="Seungho Jung — Portfolio">
-  <meta property="og:description" content="ML Researcher & Software Engineer · SKKU · 2 Publications">
+  <meta property="og:description" content="ML Researcher &amp; Software Engineer · SKKU · 2 Publications">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://richardjung21.github.io/">
   <meta property="og:image" content="https://richardjung21.github.io/assets/profile.jpg">
   <title>Seungho Jung — Portfolio</title>
   <link rel="icon" type="image/jpeg" href="assets/profile.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 
-  <!-- Navigation -->
-  <nav id="navbar" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo">SJ</a>
-      <div class="nav-links">
-        <a href="#about"        data-section="about">About</a>
-        <a href="#skills"       data-section="skills">Skills</a>
-        <a href="#experience"   data-section="experience">Experience</a>
-        <a href="#publications" data-section="publications">Publications</a>
-        <a href="#projects"     data-section="projects">Projects</a>
-        <a href="#contact"      data-section="contact">Contact</a>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <!-- Profile -->
+      <div class="sidebar-profile">
+        <img src="assets/profile.jpg" alt="Seungho Jung" class="profile-photo" onerror="this.style.display='none'">
+        <div class="profile-name">Seungho Jung</div>
+        <div class="profile-title">ML Researcher &amp; Engineer</div>
       </div>
-      <button class="nav-menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-    <div class="nav-drawer" id="navDrawer" role="menu">
-      <a href="#about"        role="menuitem">About</a>
-      <a href="#skills"       role="menuitem">Skills</a>
-      <a href="#experience"   role="menuitem">Experience</a>
-      <a href="#publications" role="menuitem">Publications</a>
-      <a href="#projects"     role="menuitem">Projects</a>
-      <a href="#contact"      role="menuitem">Contact</a>
-    </div>
-  </nav>
 
-  <main>
+      <!-- Nav -->
+      <div class="sidebar-label">NAVIGATE</div>
+      <nav class="sidebar-nav" aria-label="Site navigation">
+        <a href="#about" class="nav-link active" data-section="about" aria-current="page">&gt; about</a>
+        <a href="#skills"       class="nav-link"        data-section="skills"      >$ skills</a>
+        <a href="#experience"   class="nav-link"        data-section="experience"  >$ experience</a>
+        <a href="#publications" class="nav-link"        data-section="publications">$ publications</a>
+        <a href="#projects"     class="nav-link"        data-section="projects"    >$ projects</a>
+        <a href="#contact"      class="nav-link"        data-section="contact"     >$ contact</a>
+      </nav>
 
-    <!-- Hero -->
-    <section id="hero">
-      <div class="hero-bg" aria-hidden="true">
-        <div class="hero-orb hero-orb-1"></div>
-        <div class="hero-orb hero-orb-2"></div>
+      <!-- Social links -->
+      <div class="sidebar-links">
+        <div class="sidebar-label">LINKS</div>
+        <a href="https://github.com/richardjung21" target="_blank" rel="noopener" class="social-link">⟶ GitHub</a>
+        <a href="https://www.linkedin.com/in/richardjung21" target="_blank" rel="noopener" class="social-link">⟶ LinkedIn</a>
+        <a href="mailto:richardjung@g.skku.edu" class="social-link">⟶ Email</a>
       </div>
-      <div class="hero-inner">
-        <div class="hero-content">
-          <p class="hero-eyebrow">MS Candidate · ECE · Sungkyunkwan University</p>
-          <h1 class="hero-name">Seungho<br>Jung</h1>
-          <p class="hero-role">ML Researcher <em>&amp;</em> Engineer</p>
-          <p class="hero-bio">Pushing the boundaries of Generative Models, Computer Vision, and Medical Image Analysis — through rigorous research and thoughtful engineering.</p>
-          <div class="hero-actions">
-            <a href="#publications" class="btn btn-primary">View Publications</a>
-            <a href="#contact"      class="btn btn-ghost">Get in Touch</a>
+    </aside>
+    <main class="content" id="content">
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="section-header">// ABOUT</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h1 class="about-name">Seungho Jung</h1>
+        <p class="about-subtitle">MS Candidate · ECE · Sungkyunkwan University</p>
+        <p class="about-bio">
+          Graduate researcher specializing in Generative Models (Diffusion Models),
+          Computer Vision, and Medical Image Analysis. Currently a Graduate Researcher
+          at Crescom and a freelance web developer. 2 published papers with a 3rd on
+          the way. Native English and Korean speaker.
+        </p>
+        <div class="about-meta">
+          <div class="about-meta-group">
+            <span class="meta-label">Education</span>
+            <span class="meta-value">SKKU MS ECE &nbsp;·&nbsp; 2025–present &nbsp;·&nbsp; GPA 4.33/4.5</span>
+            <span class="meta-value">SKKU BS EE &nbsp;·&nbsp; 2019–2025 &nbsp;·&nbsp; GPA 3.46/4.5</span>
           </div>
-        </div>
-        <div class="hero-visual">
-          <div class="hero-photo-frame">
-            <img src="assets/profile.jpg" alt="Seungho Jung" class="hero-photo" onerror="this.style.display='none'">
-          </div>
-          <div class="hero-stats" aria-label="Key statistics">
-            <div class="hero-stat">
-              <span class="hero-stat-num">2</span>
-              <span class="hero-stat-label">Publications</span>
-            </div>
-            <div class="hero-stat-divider" aria-hidden="true"></div>
-            <div class="hero-stat">
-              <span class="hero-stat-num">4.33</span>
-              <span class="hero-stat-label">GPA / 4.5</span>
-            </div>
-            <div class="hero-stat-divider" aria-hidden="true"></div>
-            <div class="hero-stat">
-              <span class="hero-stat-num">4+</span>
-              <span class="hero-stat-label">Years Dev</span>
-            </div>
+          <div class="about-meta-group">
+            <span class="meta-label">Languages</span>
+            <span class="meta-value">English (Fluent) &nbsp;·&nbsp; Korean (Fluent)</span>
+            <span class="meta-value">Mandarin Chinese (Conversational) &nbsp;·&nbsp; Tagalog (Conversational)</span>
           </div>
         </div>
       </div>
-      <a href="#about" class="hero-scroll" aria-label="Scroll to About section">
-        <span class="hero-scroll-line" aria-hidden="true"></span>
-        <span class="hero-scroll-text">Scroll</span>
+      <img src="assets/profile.jpg" alt="Seungho Jung" class="about-photo" onerror="this.style.display='none'">
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="section-header">// SKILLS</div>
+    <div class="skills-groups">
+      <div class="skills-group">
+        <div class="skills-group-label">Languages</div>
+        <div class="skills-tags">
+          <span class="tag">Python</span>
+          <span class="tag">C++</span>
+          <span class="tag">Java</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">ML / AI</div>
+        <div class="skills-tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">Diffusion Models</span>
+          <span class="tag">SAM</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">Web</div>
+        <div class="skills-tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">React</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">Tools</div>
+        <div class="skills-tags">
+          <span class="tag">Git</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Arduino</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="section-header">// EXPERIENCE</div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">2025 – present</span>
+          <span class="timeline-badge current">current</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-title">Graduate Researcher</div>
+          <div class="timeline-org">Crescom</div>
+          <p class="timeline-desc">Research on Generative Models and Computer Vision at a startup. Focus on practical applications of diffusion models and image analysis.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">Freelance</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-title">Freelance Developer</div>
+          <div class="timeline-org">Waterbe</div>
+          <p class="timeline-desc">Frontend and backend web development. Contributed across the full stack.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">2024.02 – 2025.02</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-title">Undergraduate Researcher</div>
+          <div class="timeline-org">SKKU Media System Laboratory</div>
+          <p class="timeline-desc">12 months of research experience within the university lab.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">2021 – 2024</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-title">Developer</div>
+          <div class="timeline-org">NNS Company</div>
+          <p class="timeline-desc">Multiple development projects: NLP natural language classifier (2021), Arduino-based water control system (2023), KNN pest &amp; disease classifier (2023), Node.js/Express website (2023–2024).</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">2022.12 – 2023.02</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-title">Programming Tutor</div>
+          <div class="timeline-org">평정 학원</div>
+          <p class="timeline-desc">Taught C++, Java, and Python fundamentals to students.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="section">
+    <div class="section-header">// PUBLICATIONS</div>
+    <div class="pub-list">
+
+      <div class="pub-item pub-published">
+        <div class="pub-venue">ICCRD 2026 &nbsp;·&nbsp; January 24, 2026</div>
+        <div class="pub-title">Dual-Manifold Alignment Contrastive Learning for Knee Osteoarthritis Prediction</div>
+        <div class="pub-authors">Seungho Jung, Jitae Shin</div>
+      </div>
+
+      <div class="pub-item pub-published">
+        <div class="pub-venue">ITC-CSCC 2025 &nbsp;·&nbsp; July 7, 2025</div>
+        <div class="pub-title">Medical SAM Adapter++: Adaptive Normalization with Domain Interpretation for Better Adaptation</div>
+        <div class="pub-authors">Seungho Jung, Jitae Shin</div>
+      </div>
+
+      <div class="pub-item pub-upcoming">
+        <div class="pub-venue">// coming soon</div>
+        <div class="pub-title">Upcoming publication</div>
+        <div class="pub-authors">Seungho Jung et al.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="section-header">// PROJECTS</div>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Next-Generation Functional Desk</div>
+          <div class="project-date">2024</div>
+        </div>
+        <p class="project-desc">Wireless power transmission and reception system integrated into a desk design. Includes a CNN-based OCR model that reads handwritten letters and translates them to machine text.</p>
+        <div class="project-tags">
+          <span class="tag">Arduino</span>
+          <span class="tag">CNN</span>
+          <span class="tag">OCR</span>
+          <span class="tag">Python</span>
+          <span class="tag">Wireless Charging</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">KNN Pest Disease Classifier</div>
+          <div class="project-date">2023</div>
+        </div>
+        <p class="project-desc">Agricultural pest and disease image classification system. Built for NNS to identify plant diseases from images using K-Nearest Neighbors.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">KNN</span>
+          <span class="tag">OpenCV</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">NLP Natural Language Classifier</div>
+          <div class="project-date">2021</div>
+        </div>
+        <p class="project-desc">Natural language classification system developed for NNS Company. Categorizes text input using NLP techniques.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">NLP</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Arduino Water Control System</div>
+          <div class="project-date">2023</div>
+        </div>
+        <p class="project-desc">Automated water control system using Arduino sensors and actuators. Developed for NNS Company.</p>
+        <div class="project-tags">
+          <span class="tag">Arduino</span>
+          <span class="tag">C++</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="section-header">// CONTACT</div>
+    <p class="contact-tagline">Open to SWE and ML/AI roles. Feel free to reach out.</p>
+    <div class="contact-links">
+      <a href="mailto:richardjung@g.skku.edu" class="contact-item">
+        <span class="contact-icon">✉</span>
+        <span>richardjung@g.skku.edu</span>
       </a>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="section reveal-section">
-      <div class="section-inner">
-        <div class="section-label">About</div>
-        <div class="about-grid">
-          <div class="about-text">
-            <h2 class="section-heading">Building at the frontier<br><em>of AI and medicine.</em></h2>
-            <p class="about-bio">I'm Seungho Jung — a graduate researcher at Crescom and MS candidate at SKKU's ECE department. My work lives at the intersection of generative AI, computer vision, and clinical applications, with a focus on making medical imaging analysis more intelligent and accessible.</p>
-            <p class="about-bio">With 2 published papers and a third in progress, I combine deep theoretical foundations with engineering discipline — from diffusion models to full-stack web development.</p>
-            <div class="about-meta">
-              <div class="about-meta-item">
-                <span class="about-meta-label">Education</span>
-                <div class="about-edu">
-                  <div class="edu-item">
-                    <span class="edu-degree">MS ECE</span>
-                    <span class="edu-detail">SKKU · 2025–present · GPA 4.33/4.5</span>
-                  </div>
-                  <div class="edu-item">
-                    <span class="edu-degree">BS EE</span>
-                    <span class="edu-detail">SKKU · 2019–2025 · GPA 3.46/4.5</span>
-                  </div>
-                </div>
-              </div>
-              <div class="about-meta-item">
-                <span class="about-meta-label">Languages</span>
-                <div class="about-langs">
-                  <span class="lang-chip">English <em>Native</em></span>
-                  <span class="lang-chip">Korean <em>Native</em></span>
-                  <span class="lang-chip">Mandarin <em>Conversational</em></span>
-                  <span class="lang-chip">Tagalog <em>Conversational</em></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="about-photo-col">
-            <img src="assets/profile.jpg" alt="Seungho Jung" class="about-photo" onerror="this.style.display='none'">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="section reveal-section">
-      <div class="section-inner">
-        <div class="section-label">Skills</div>
-        <h2 class="section-heading">Tools of the trade.</h2>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h3 class="skill-cat-label">Languages</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">C++</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">JavaScript</span>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3 class="skill-cat-label">ML / AI</h3>
-            <div class="skill-tags">
-              <span class="skill-tag skill-tag-accent">PyTorch</span>
-              <span class="skill-tag skill-tag-accent">OpenCV</span>
-              <span class="skill-tag skill-tag-accent">Diffusion Models</span>
-              <span class="skill-tag skill-tag-accent">SAM</span>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3 class="skill-cat-label">Web</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">Node.js</span>
-              <span class="skill-tag">Express</span>
-              <span class="skill-tag">React</span>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3 class="skill-cat-label">Tools</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">Linux</span>
-              <span class="skill-tag">Arduino</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="section reveal-section">
-      <div class="section-inner">
-        <div class="section-label">Experience</div>
-        <h2 class="section-heading">Where I've built<br><em>and researched.</em></h2>
-        <div class="timeline">
-
-          <div class="timeline-item reveal-item">
-            <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <h3 class="timeline-role">Graduate Researcher</h3>
-                <span class="timeline-badge current">Current</span>
-              </div>
-              <div class="timeline-org-row">
-                <span class="timeline-org">Crescom</span>
-                <span class="timeline-period">2025 – present</span>
-              </div>
-              <p class="timeline-desc">Research on Generative Models and Computer Vision at a startup. Focus on practical applications of diffusion models and image analysis.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item reveal-item">
-            <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <h3 class="timeline-role">Freelance Developer</h3>
-              </div>
-              <div class="timeline-org-row">
-                <span class="timeline-org">Waterbe</span>
-                <span class="timeline-period">Freelance</span>
-              </div>
-              <p class="timeline-desc">Frontend and backend web development. Contributed across the full stack.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item reveal-item">
-            <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <h3 class="timeline-role">Undergraduate Researcher</h3>
-              </div>
-              <div class="timeline-org-row">
-                <span class="timeline-org">SKKU Media System Laboratory</span>
-                <span class="timeline-period">2024.02 – 2025.02</span>
-              </div>
-              <p class="timeline-desc">12 months of research experience within the university lab.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item reveal-item">
-            <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <h3 class="timeline-role">Developer</h3>
-              </div>
-              <div class="timeline-org-row">
-                <span class="timeline-org">NNS Company</span>
-                <span class="timeline-period">2021 – 2024</span>
-              </div>
-              <p class="timeline-desc">Multiple development projects: NLP natural language classifier (2021), Arduino-based water control system (2023), KNN pest &amp; disease classifier (2023), Node.js/Express website (2023–2024).</p>
-            </div>
-          </div>
-
-          <div class="timeline-item reveal-item">
-            <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <h3 class="timeline-role">Programming Tutor</h3>
-              </div>
-              <div class="timeline-org-row">
-                <span class="timeline-org">평정 학원</span>
-                <span class="timeline-period">2022.12 – 2023.02</span>
-              </div>
-              <p class="timeline-desc">Taught C++, Java, and Python fundamentals to students.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Publications -->
-    <section id="publications" class="section reveal-section">
-      <div class="section-inner">
-        <div class="section-label">Publications</div>
-        <h2 class="section-heading">Peer-reviewed research.</h2>
-        <div class="pub-list">
-
-          <div class="pub-card reveal-item">
-            <div class="pub-venue-row">
-              <span class="pub-venue">ICCRD 2026</span>
-              <span class="pub-date">January 24, 2026</span>
-            </div>
-            <h3 class="pub-title">Dual-Manifold Alignment Contrastive Learning for Knee Osteoarthritis Prediction</h3>
-            <p class="pub-authors">Seungho Jung, Jitae Shin</p>
-            <span class="pub-badge published">Published</span>
-          </div>
-
-          <div class="pub-card reveal-item">
-            <div class="pub-venue-row">
-              <span class="pub-venue">ITC-CSCC 2025</span>
-              <span class="pub-date">July 7, 2025</span>
-            </div>
-            <h3 class="pub-title">Medical SAM Adapter++: Adaptive Normalization with Domain Interpretation for Better Adaptation</h3>
-            <p class="pub-authors">Seungho Jung, Jitae Shin</p>
-            <span class="pub-badge published">Published</span>
-          </div>
-
-          <div class="pub-card pub-card-upcoming reveal-item">
-            <div class="pub-venue-row">
-              <span class="pub-venue">Upcoming</span>
-            </div>
-            <h3 class="pub-title">Upcoming Publication</h3>
-            <p class="pub-authors">Seungho Jung et al.</p>
-            <span class="pub-badge upcoming">In Progress</span>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section reveal-section">
-      <div class="section-inner">
-        <div class="section-label">Projects</div>
-        <h2 class="section-heading">Selected work.</h2>
-        <div class="projects-grid">
-
-          <div class="project-card reveal-item">
-            <div class="project-year">2024</div>
-            <h3 class="project-title">Next-Generation Functional Desk</h3>
-            <p class="project-desc">Wireless power transmission and reception system integrated into a desk design. Includes a CNN-based OCR model that reads handwritten letters and translates them to machine text.</p>
-            <div class="project-tags">
-              <span class="project-tag">Arduino</span>
-              <span class="project-tag">CNN</span>
-              <span class="project-tag">OCR</span>
-              <span class="project-tag">Python</span>
-              <span class="project-tag">Wireless Charging</span>
-            </div>
-          </div>
-
-          <div class="project-card reveal-item">
-            <div class="project-year">2023</div>
-            <h3 class="project-title">KNN Pest Disease Classifier</h3>
-            <p class="project-desc">Agricultural pest and disease image classification system. Built for NNS to identify plant diseases from images using K-Nearest Neighbors.</p>
-            <div class="project-tags">
-              <span class="project-tag">Python</span>
-              <span class="project-tag">KNN</span>
-              <span class="project-tag">OpenCV</span>
-            </div>
-          </div>
-
-          <div class="project-card reveal-item">
-            <div class="project-year">2021</div>
-            <h3 class="project-title">NLP Natural Language Classifier</h3>
-            <p class="project-desc">Natural language classification system developed for NNS Company. Categorizes text input using NLP techniques.</p>
-            <div class="project-tags">
-              <span class="project-tag">Python</span>
-              <span class="project-tag">NLP</span>
-            </div>
-          </div>
-
-          <div class="project-card reveal-item">
-            <div class="project-year">2023</div>
-            <h3 class="project-title">Arduino Water Control System</h3>
-            <p class="project-desc">Automated water control system using Arduino sensors and actuators. Developed for NNS Company.</p>
-            <div class="project-tags">
-              <span class="project-tag">Arduino</span>
-              <span class="project-tag">C++</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section reveal-section">
-      <div class="section-inner">
-        <div class="contact-inner">
-          <div class="section-label">Contact</div>
-          <h2 class="section-heading">Open to<br><em>opportunities.</em></h2>
-          <p class="contact-sub">Looking for SWE and ML/AI roles. Let's build something meaningful together.</p>
-          <div class="contact-links">
-            <a href="mailto:richardjung@g.skku.edu" class="contact-link">
-              <span class="contact-icon" aria-hidden="true">✉</span>
-              <div class="contact-link-text">
-                <span class="contact-link-label">Email</span>
-                <span class="contact-link-value">richardjung@g.skku.edu</span>
-              </div>
-            </a>
-            <a href="https://github.com/richardjung21" target="_blank" rel="noopener" class="contact-link">
-              <span class="contact-icon" aria-hidden="true">↗</span>
-              <div class="contact-link-text">
-                <span class="contact-link-label">GitHub</span>
-                <span class="contact-link-value">richardjung21</span>
-              </div>
-            </a>
-            <a href="https://www.linkedin.com/in/richardjung21" target="_blank" rel="noopener" class="contact-link">
-              <span class="contact-icon" aria-hidden="true">in</span>
-              <div class="contact-link-text">
-                <span class="contact-link-label">LinkedIn</span>
-                <span class="contact-link-value">richardjung21</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <span>© 2025 Seungho Jung</span>
-      <span class="footer-sep" aria-hidden="true">·</span>
-      <span>Built with care</span>
+      <a href="https://github.com/richardjung21" target="_blank" rel="noopener" class="contact-item">
+        <span class="contact-icon">&gt;</span>
+        <span>github.com/richardjung21</span>
+      </a>
+      <a href="https://www.linkedin.com/in/richardjung21" target="_blank" rel="noopener" class="contact-item">
+        <span class="contact-icon">in</span>
+        <span>LinkedIn</span>
+      </a>
     </div>
-  </footer>
+  </section>
+
+</main>
+  </div>
 
   <script src="script.js"></script>
 </body>
