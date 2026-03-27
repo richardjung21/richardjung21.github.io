@@ -84,6 +84,73 @@ a:hover { text-decoration: underline; }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
+/* ── Sidebar internals ──────────────────────────────── */
+.sidebar-profile {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.profile-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 10px;
+}
+.profile-name {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+}
+.profile-title {
+  color: var(--accent);
+  font-size: 10px;
+  margin-top: 3px;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-label {
+  color: var(--text-muted);
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin: 12px 0 6px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nav-link {
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 3px;
+  border-left: 2px solid transparent;
+  transition: color 0.15s, background 0.15s;
+}
+.nav-link:hover { color: var(--text-sec); text-decoration: none; }
+.nav-link.active {
+  color: var(--accent);
+  background: var(--accent-dim);
+  border-left-color: var(--accent);
+}
+
+.sidebar-links {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.social-link {
+  color: var(--accent);
+  font-size: 11px;
+}
+.social-link:hover { text-decoration: underline; }
+
 /* ── Mobile ─────────────────────────────────────────── */
 @media (max-width: 768px) {
   .hamburger { display: flex; }
