@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburger');
   const sidebar   = document.getElementById('sidebar');
 
+  if (!hamburger || !sidebar) return;
+
   hamburger.addEventListener('click', () => {
     const isOpen = hamburger.classList.toggle('open');
     sidebar.classList.toggle('open', isOpen);
@@ -40,13 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
 
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(link => {
-          const isActive = link.dataset.section === entry.target.id;
-          link.classList.toggle('active', isActive);
-          link.setAttribute('aria-current', isActive ? 'page' : 'false');
-        });
+    const intersecting = entries.filter(e => e.isIntersecting);
+    if (intersecting.length === 0) return;
+    const active = intersecting[intersecting.length - 1];
+    navLinks.forEach(link => {
+      const isActive = link.dataset.section === active.target.id;
+      link.classList.toggle('active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
       }
     });
   }, {
