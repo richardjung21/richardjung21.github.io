@@ -367,7 +367,7 @@ a:hover { text-decoration: underline; }
   gap: 16px;
 }
 .project-card {
-  background: #111;
+  background: var(--bg-sidebar);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 18px;
@@ -445,4 +445,10 @@ a:hover { text-decoration: underline; }
     margin-left: 0;
     padding: 64px 20px 32px;
   }
+  .about-grid { flex-direction: column-reverse; }
+  .about-photo { width: 72px; height: 72px; align-self: center; }
+  .timeline-item { flex-direction: column; gap: 4px; }
+  .timeline-item::before, .timeline-item::after { display: none; }
+  .timeline-meta { width: auto; text-align: left; padding-right: 0; flex-direction: row; align-items: center; }
+  .timeline-body { padding-left: 0; }
 }
