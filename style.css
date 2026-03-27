@@ -435,6 +435,7 @@ a:hover { text-decoration: underline; }
 
 /* ── Mobile ─────────────────────────────────────────── */
 @media (max-width: 768px) {
+  .section { scroll-margin-top: 72px; }
   .hamburger { display: flex; }
   .sidebar {
     transform: translateX(-100%);
