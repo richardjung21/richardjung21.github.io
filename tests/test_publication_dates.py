@@ -10,14 +10,14 @@ class PublicationDateTests(unittest.TestCase):
         return {'title': title, 'date': value, 'venue': 'Conference',
                 'authors': ['Author'], 'status': 'Published', **extra}
 
-    def test_sorting_is_independent_of_input_order_and_featured_status(self):
-        papers = [self.paper('Older featured', '2024-09-21', featured=True),
+    def test_sorting_is_independent_of_input_order(self):
+        papers = [self.paper('Older', '2024-09-21'),
                   self.paper('Newest', '2026-07-12', status='Accepted'),
                   self.paper('Middle', 'May 12, 2026'),
                   self.paper('Upcoming', '', status='In Progress')]
         for permutation in itertools.permutations(papers):
             self.assertEqual([p['title'] for p in sorted_publications(permutation)],
-                             ['Newest', 'Middle', 'Older featured', 'Upcoming'])
+                             ['Newest', 'Middle', 'Older', 'Upcoming'])
         original = copy.deepcopy(papers)
         sorted_publications(papers)
         self.assertEqual(papers, original)

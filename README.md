@@ -71,7 +71,16 @@ To add a paper, copy an object in `publications` and edit its fields:
 }
 ```
 
-Publications are automatically sorted newest-first, regardless of their order in
+Publications are grouped into first-author, second-author, and (when needed)
+additional coauthored papers. Your position is derived from the `authors` list by
+matching `profile.publication_name`, ignoring spaces and capitalization. Keep
+authors in the order printed in the paper. Missing or duplicate matches stop the
+build rather than silently assigning an incorrect role. Empty groups are omitted.
+For a confirmed authorship designation that differs from the byline index, set
+`author_position` on that paper (for example, `2` for second author). This takes
+precedence for grouping while preserving the complete printed byline. ECML PKDD
+uses this field for the author's confirmed second-author designation.
+Each group is automatically sorted newest-first, regardless of the order in
 `content.json`. Dates also receive consistent display formatting:
 
 | `date` in JSON | Display |
@@ -86,8 +95,7 @@ from that year; a month-only entry follows fully dated entries from that month.
 Ties are resolved alphabetically by title, then venue, authors, and status.
 The original English format (`"May 12, 2026"`) still works. `"To be announced"`
 and `"TBA"` are also accepted as undated labels. Other unrecognized or invalid
-dates stop the build with a message naming the paper. Publication status and
-featured styling do not override date order.
+dates stop the build with a message naming the paper. Publication status does not override date order.
 
 Other lists retain their JSON order. Add or remove education,
 languages, skills, jobs, papers, projects, and contacts in the same way; empty
@@ -125,11 +133,11 @@ Check that generated HTML matches the source before publishing:
 ```sh
 python build.py --check
 python -m unittest discover -s tests
-node --test tests/navigation.test.cjs
+node --test tests/navigation.test.cjs tests/lightbox.test.cjs
 ```
 
 The researcher profile uses DM Sans and JetBrains Mono from Google Fonts, with
-system sans-serif/monospace fallbacks. There are no third-party JavaScript dependencies.
+system sans-serif/monospace fallbacks. Lightbox2 includes its bundled jQuery; all JavaScript is served locally.
 `hero.research_interests` controls the research-area summaries. Each entry can be
 a plain title or an object with `title` and `description`. `profile.photo_caption`
 controls the portrait caption. Projects use equally weighted cards with optional
@@ -155,9 +163,39 @@ Only supplied links appear; there are no placeholder buttons. Replace example
 URLs with the real destinations. Hero buttons may use `"contact": "GitHub"`
 instead of `href` to reuse a contact entry, keeping the username in one place.
 
-Set `"featured": true` on a publication to give it the selected-publication
-treatment at its chronological position. The card uses
-the same publication data and does not duplicate the paper or its count.
 `profile.publication_name` controls the author name emphasized in publication
 bylines. The degree and school in the introduction come from the featured
 education entry. Graduation dates remain manually editable in `education.period`.
+
+## Paper summaries and figures
+
+Each paper can include an optional `overview` object in `content.json`:
+
+- `takeaway`: one sentence describing the research idea.
+- `method`: short strings shown as a numbered method diagram.
+- `results`: objects with `label` and `value`, shown as prominent result tiles.
+- `context`: dataset, comparison, and table/page reference for those results.
+- `note`: the relevant trade-off or scope of the result.
+- `figure`: `src`, `width`, `height`, `alt`, and `caption` for an extracted image.
+- `source`: local PDF filename and page numbers for editorial verification; this
+  metadata is not rendered or linked on the website.
+
+Summaries, method diagrams, results, and figures are collapsed together by default.
+Visitors can expand "At a glance & figure" to view them in one disclosure.
+Click a figure or "Enlarge figure" to open an individual Lightbox2 viewer. It uses the
+upstream white image border, dark overlay, captions,
+600 ms fades and 700 ms container resizing. Escape, the close control, or the
+overlay dismisses it. Reduced-motion preferences disable the animations.
+`lightbox.js` configures the library and connects caption links to their images. Each figure opens independently, with no previous/next navigation. The
+image frame and caption are centered vertically in the viewport. Without
+JavaScript, links open the image normally.
+Lightbox2 2.12.0 and its bundled jQuery are vendored under
+`assets/vendor/lightbox2/`, with upstream license notices retained.
+The disclosure works without JavaScript. Figure images are loaded lazily and
+reserve their dimensions to avoid layout shifts. Papers without an overview,
+including unfinished work, keep the usual citation card.
+
+The initial summaries were checked against the supplied manuscripts. Figures live
+in `assets/research/`; extraction locations and metadata corrections are recorded
+in `assets/research/README.md`. Updating ordinary summary text does not require
+PDF tools or any new build dependency.

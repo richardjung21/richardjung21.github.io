@@ -84,11 +84,12 @@ class BuildTests(unittest.TestCase):
         page = Page(render(self.data))
         self.assertEqual(page.css('hero-name')[0]['text'], name)
         self.assertIn(name, page.css('about-bio')[0]['text'])
-        photos = [x for x in page.elements if x['tag'] == 'img']
+        photos = [x for x in page.elements if x['tag'] == 'img' and x['attrs'].get('src') == 'assets/new.jpg']
+        self.assertTrue(photos)
         self.assertTrue(all(x['attrs']['src'] == 'assets/new.jpg' and x['attrs']['alt'] == name for x in photos))
         self.assertEqual(page.css('contact-link')[0]['attrs']['href'], 'mailto:new@example.com')
         self.assertEqual(page.css('contact-link-value')[0]['text'], 'new@example.com')
-        self.assertEqual(len([x for x in page.elements if x['tag']=='script']), 1)
+        self.assertEqual(len([x for x in page.elements if x['tag']=='script']), 3)
 
     def test_navigation_and_animation_hooks(self):
         page = Page(render(self.data))
@@ -161,18 +162,14 @@ class BuildTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Unsupported link scheme'):
             render(self.data)
 
-    def test_featured_publication_and_shared_academic_profile(self):
+    def test_shared_academic_profile(self):
         self.data['education'][0]['degree'] = 'Updated degree'
         self.data['hero']['research_interests'] = [{'title': 'Model adaptation', 'description': 'Models for medical images.'}]
         page = Page(render(self.data))
         self.assertIn('Updated degree', page.css('hero-education')[0]['text'])
         self.assertIn('Updated degree', page.css('edu-degree')[0]['text'])
-        self.assertEqual(len(page.css('pub-card-featured')), 1)
         self.assertEqual(page.css('research-area-description')[0]['text'], 'Models for medical images.')
         self.assertTrue(all(x['text'] == 'Seung Ho Jung' for x in page.css('pub-author-self')))
-        self.data['publications'][0]['featured'] = False
-        page = Page(render(self.data))
-        self.assertEqual(len(page.css('pub-card-featured')), 0)
 
     def test_rendered_publication_order_survives_json_reordering(self):
         original = copy.deepcopy(self.data)

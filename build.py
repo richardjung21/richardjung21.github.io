@@ -111,18 +111,79 @@ def research_interests(items):
     return ''.join(areas)
 
 
+def author_key(name):
+    """Recognize publication bylines with different spacing or capitalization."""
+    return re.sub(r'[\W_]+', '', name.casefold())
+
+
+def author_position(item, author_name):
+    override = item.get('author_position')
+    if override is not None:
+        if type(override) is not int or not 1 <= override <= len(item['authors']):
+            raise ValueError(f'Invalid author_position for {item["title"]!r}')
+        return override
+    matches = [i + 1 for i, name in enumerate(item['authors']) if author_key(name) == author_key(author_name)]
+    if len(matches) != 1:
+        raise ValueError(f'Expected one matching publication author for {item["title"]!r}')
+    return matches[0]
+
+
+def publication_overview(item):
+    overview = item.get('overview')
+    if not overview:
+        return ''
+    steps = tag('ol', 'paper-method', ''.join(tag('li', 'paper-step',
+        span('paper-step-number', f'{i:02}') + e(step)) for i, step in enumerate(overview['method'], 1)),
+        **{'aria-label': 'Method at a glance'})
+    metrics = tag('dl', 'paper-results', ''.join(tag('div', 'paper-result',
+        tag('dt', '', e(metric['label'])) + tag('dd', '', e(metric['value']))) for metric in overview['results']))
+    figure = overview.get('figure')
+    figure_html = ''
+    if figure:
+        figure_html = tag('figure', 'paper-figure',
+                tag('a', 'paper-image-trigger',
+                    f'<img src="{e(safe_url(figure["src"]))}" alt="{e(figure["alt"])}" '
+                    f'width="{int(figure["width"])}" height="{int(figure["height"])}" loading="lazy" decoding="async">',
+                    href=safe_url(figure['src']), **{'data-lightbox': figure['src'],
+                        'data-title': item['title'], 'data-alt': figure['alt'],
+                        'aria-label': 'Enlarge figure: '+item['title']}) +
+                tag('figcaption', '', e(figure['caption']) + ' ' +
+                    tag('a', 'paper-full-image', 'Enlarge figure',
+                        href=safe_url(figure['src']))))
+    return tag('details', 'paper-figure-details',
+        tag('summary', '', 'At a glance'+(' &amp; figure' if figure else '')) +
+        tag('div', 'paper-overview',
+        tag('p', 'paper-takeaway', e(overview['takeaway'])) + steps + metrics +
+        tag('p', 'paper-context', e(overview['context'])) +
+        tag('p', 'paper-note', e(overview['note'])) + figure_html))
+
+
 def publication_card(item, author_name):
     _, date_label = publication_date(item)
     status = {'In Progress': 'upcoming', 'Accepted': 'accepted', 'Published': 'published'}[item['status']]
-    authors = ', '.join(tag('strong', 'pub-author-self', e(name)) if name == author_name else e(name)
+    authors = ', '.join(tag('strong', 'pub-author-self', e(name)) if author_key(name) == author_key(author_name) else e(name)
                         for name in item['authors'])
-    return tag('article', 'pub-card reveal-item'+(' pub-card-upcoming' if status == 'upcoming' else '')+
-        (' pub-card-featured' if item.get('featured') else ''),
-        (span('pub-feature-label', 'Selected publication') if item.get('featured') else '')+
+    position = author_position(item, author_name)
+    return tag('article', 'pub-card reveal-item'+(' pub-card-upcoming' if status == 'upcoming' else ''),
         tag('div', 'pub-venue-row', span('pub-venue', item['venue'])+
             (span('pub-date', date_label) if date_label else ''))+
-        tag('h3', 'pub-title', e(item['title']))+tag('p', 'pub-authors', authors)+
-        span('pub-badge '+status, item['status'])+resource_links(item))
+        tag('h4', 'pub-title', e(item['title']))+tag('p', 'pub-authors', authors)+
+        span('pub-badge '+status, item['status'])+
+        (span('pub-author-position', f'Author {position} of {len(item["authors"])}') if position > 2 else '')+
+        publication_overview(item)+resource_links(item))
+
+
+def publication_groups(papers, author_name):
+    groups = {'first': [], 'second': [], 'other': []}
+    for paper in sorted_publications(papers):
+        position = author_position(paper, author_name)
+        groups['first' if position == 1 else 'second' if position == 2 else 'other'].append(paper)
+    labels = {'first': 'First-author papers', 'second': 'Second-author papers', 'other': 'Additional coauthored papers'}
+    return '\n'.join(tag('div', 'pub-group',
+        tag('div', 'pub-group-header', tag('h3', 'pub-group-title', e(labels[key]), id=f'papers-{key}')+
+            span('pub-group-count', f'{len(items)} '+('paper' if len(items) == 1 else 'papers')))+
+        tag('div', 'pub-list', ''.join(publication_card(item, author_name) for item in items)),
+        **{'role': 'group', 'aria-labelledby': f'papers-{key}'}) for key, items in groups.items() if items)
 
 
 def build_context(data):
@@ -193,7 +254,7 @@ def build_context(data):
             (span('timeline-badge current', 'Current') if x.get('current') else ''))+
             tag('div', 'timeline-org-row', span('timeline-org', x['organization'])+span('timeline-period', x['period']))+
             tag('p', 'timeline-desc', e(x['description'])))) for x in data['experience'])
-    context['publications'] = '\n'.join(publication_card(x, profile.get('publication_name', profile['name'])) for x in papers)
+    context['publications'] = publication_groups(papers, profile.get('publication_name', profile['name']))
     context['projects'] = '\n'.join(tag('div', 'project-card reveal-item', tag('div', 'project-year', e(x['year']))+
         tag('h3', 'project-title', e(x['title']))+tag('p', 'project-desc', e(x['description']))+project_details(x)+
         tag('div', 'project-tags', ''.join(span('project-tag', item) for item in x['tags']))+resource_links(x)) for x in data['projects'])
@@ -217,9 +278,8 @@ def render_page(data, context, page):
         return Template((ROOT/'templates/redirect.html').read_text(encoding='utf-8')).substitute(
             title=e(sections[page]['label']), name=context['name'],
             destination=e('index.html#'+page), canonical=e(data['profile']['site_url']))
-    label = 'Home' if page == 'home' else sections[page]['label']
     context['page_title'] = e(f'{data["profile"]["name"]} — Research portfolio')
-    context['page_url'] = e(urljoin(data['profile']['site_url'], '' if page == 'home' else PAGE_FILES[page]))
+    context['page_url'] = e(data['profile']['site_url'])
     context['page_id'] = page
     navigation = [{'id': 'hero', 'label': 'Home'}, *data['sections']]
     context['navigation'] = '\n'.join(tag('a', 'nav-link'+(' active' if s['id'] == 'hero' else ''),

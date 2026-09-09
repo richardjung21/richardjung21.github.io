@@ -193,7 +193,41 @@
         "Jitae Shin"
       ],
       "status": "Published",
-      "featured": true
+      "overview": {
+        "takeaway": "Predict four-year knee osteoarthritis progression without assuming every patient follows the same path.",
+        "method": [
+          "One baseline knee X-ray",
+          "Present and future latent spaces",
+          "Align stability; separate progression"
+        ],
+        "results": [
+          {
+            "label": "Progression-risk AUC",
+            "value": "0.7638"
+          },
+          {
+            "label": "Prediction horizon",
+            "value": "48 months"
+          }
+        ],
+        "context": "OAI cohort of 4,796 image pairs with Site D held out for validation/test. Compared baseline AUC: 0.7289 (Table I, p. 4).",
+        "note": "The input is a baseline radiograph; future grades provide training supervision. Results describe the reported OAI evaluation.",
+        "source": {
+          "file": "assets/papers/ICCRD_RD0320.pdf",
+          "pages": [
+            1,
+            3,
+            4
+          ]
+        },
+        "figure": {
+          "src": "assets/research/duma-clr.png",
+          "width": 3168,
+          "height": 1470,
+          "alt": "A baseline X-ray passes through a shared encoder to current and future grade heads and separate latent projections, followed by dual-manifold alignment.",
+          "caption": "Figure 2, p. 3. DuMA-CLR architecture from the ICCRD manuscript."
+        }
+      }
     },
     {
       "venue": "ICISPC 2026",
@@ -201,9 +235,49 @@
       "title": "Efficient Autoencoding with Quadtree-based Visual Transformer Encoder",
       "authors": [
         "Seung Ho Jung",
+        "Kyu Hoon Moon",
+        "Geonhyeok Lee",
         "Jitae Shin"
       ],
-      "status": "Accepted"
+      "status": "Accepted",
+      "overview": {
+        "takeaway": "Spend fewer image tokens on simple backgrounds, then restore a dense grid for reconstruction.",
+        "method": [
+          "Entropy-based quadtree patches",
+          "Compact ViT encoding",
+          "Mask-token grid restoration"
+        ],
+        "results": [
+          {
+            "label": "Compute vs. dense ViT-B",
+            "value": "17.5% less"
+          },
+          {
+            "label": "Reconstruction PSNR",
+            "value": "29.60 dB"
+          }
+        ],
+        "context": "STL-10 benchmark: 36.21 vs. 43.88 GFLOPS; PSNR 29.60 vs. 34.03 dB for dense ViT-B (Table 1, p. 8).",
+        "note": "Trade-off: less computation, but lower reconstruction quality than the dense baseline and visible artifacts in some skipped regions.",
+        "source": {
+          "file": "assets/papers/ICISPC_AP027.pdf",
+          "pages": [
+            1,
+            4,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        "figure": {
+          "src": "assets/research/quadtree.png",
+          "width": 817,
+          "height": 540,
+          "alt": "Five-column reconstruction comparison with quadtree patches, ground truth, FVQ, SoftVQ and the proposed method; red boxes and enlarged insets compare details around the cat eye.",
+          "caption": "Author-supplied qualitative comparison: quadtree allocation, ground truth, FVQ, SoftVQ and the proposed method. Red insets show magnified reconstruction detail."
+        }
+      }
     },
     {
       "venue": "ECML PKDD 2026",
@@ -217,7 +291,45 @@
         "Donghwi Shin",
         "Jitae Shin"
       ],
-      "status": "Accepted"
+      "status": "Accepted",
+      "overview": {
+        "takeaway": "Trace anomalous sensor readings back to likely causes while accounting for changing, uncertain relationships.",
+        "method": [
+          "Learn dynamic causal graphs",
+          "Calibrate forecast uncertainty",
+          "Rank residual and structural deviations"
+        ],
+        "results": [
+          {
+            "label": "MSDS root-cause AC@1",
+            "value": "0.827"
+          },
+          {
+            "label": "SWaT root-cause AC@3",
+            "value": "0.517"
+          }
+        ],
+        "context": "Mean AC@K on industrial benchmarks: MSDS AC@1 = 0.827 +/- 0.102; SWaT AC@3 = 0.517 +/- 0.037 (Table 3, p. 12).",
+        "note": "AC@K measures recovery of root-cause variables among the top K candidates. The model does not lead every metric; RCG has higher SWaT AC@1.",
+        "source": {
+          "file": "assets/papers/ECML_PKDD_783.pdf",
+          "pages": [
+            1,
+            4,
+            10,
+            11,
+            12
+          ]
+        },
+        "figure": {
+          "src": "assets/research/causal-graphs.png",
+          "width": 2100,
+          "height": 810,
+          "alt": "Sensor time series feed dynamic causal graph estimation and distributional forecasting; forecast errors and causal structure errors combine to rank root causes.",
+          "caption": "Figure 1, p. 4. Probabilistic causal discovery and root-cause scoring from the ECML PKDD manuscript."
+        }
+      },
+      "author_position": 2
     },
     {
       "venue": "ITC-CSCC 2025",
@@ -228,18 +340,91 @@
         "Jae Joon Lee",
         "Jitae Shin"
       ],
-      "status": "Published"
+      "status": "Published",
+      "overview": {
+        "takeaway": "Use image-level domain context to adapt SAM normalization for medical segmentation.",
+        "method": [
+          "Extract image statistics",
+          "Interpret domain context",
+          "Condition adaptive normalization"
+        ],
+        "results": [
+          {
+            "label": "OAI Dice, full model",
+            "value": "66.33%"
+          },
+          {
+            "label": "Gain over Med-SA",
+            "value": "+3.79 pp"
+          }
+        ],
+        "context": "Noisy OAI ablation: Dice rises from 62.54% to 66.33%; IoU from 51.04% to 53.61% (Table II, p. 5).",
+        "note": "This comparison isolates AdaLN and the domain interpreter. The separate denoised experiment reports different scores.",
+        "source": {
+          "file": "assets/papers/ITC-CSCC_Final_Manuscript_정승호.pdf",
+          "pages": [
+            1,
+            3,
+            5
+          ]
+        },
+        "figure": {
+          "src": "assets/research/med-sa.png",
+          "width": 2268,
+          "height": 1326,
+          "alt": "Med-SA encoder alongside Med-SA++, which adds a domain interpreter that conditions adaptive layer normalization.",
+          "caption": "Figure 2, p. 3. Baseline and proposed encoder from the ITC-CSCC manuscript."
+        }
+      }
     },
     {
       "venue": "Sensors 2024",
-      "date": "2024-09-21",
+      "date": "2024-10-27",
       "title": "Breast Lesion Detection for Ultrasound Images Using MaskFormer",
       "authors": [
         "Aashna Anand",
         "Seung Ho Jung",
         "Sukhan Lee"
       ],
-      "status": "Published"
+      "status": "Published",
+      "overview": {
+        "takeaway": "Locate breast lesions and assign their class within one ultrasound-image model.",
+        "method": [
+          "Ultrasound image features",
+          "MaskFormer mask classification",
+          "Lesion masks and class labels"
+        ],
+        "results": [
+          {
+            "label": "Mean average precision",
+            "value": "0.943"
+          },
+          {
+            "label": "Malignant-lesion recall",
+            "value": "0.900"
+          }
+        ],
+        "context": "Breast Ultrasound Image Dataset; reported 80/10/10 train/test/validation split. Results from Tables 4 and 5, pp. 12 and 14.",
+        "note": "Illustrated cases include small, multiple and low-contrast lesions. The model predicts masks and normal, benign or malignant labels in a single framework.",
+        "source": {
+          "file": "assets/papers/Breat_Lesion_Detection.pdf",
+          "pages": [
+            1,
+            5,
+            7,
+            11,
+            12,
+            14
+          ]
+        },
+        "figure": {
+          "src": "assets/research/maskformer.png",
+          "width": 3150,
+          "height": 1200,
+          "alt": "Five ultrasound examples above their predicted segmentation masks: normal tissue, two benign cases and two malignant cases.",
+          "caption": "Anand, Jung and Lee, Sensors 2024, Figure 3, p. 11 (CC BY 4.0). Figure area extracted; panel labels retained."
+        }
+      }
     },
     {
       "venue": "Upcoming",
@@ -362,11 +547,6 @@
   },
   "sections": [
     {
-      "id": "publications",
-      "label": "Research",
-      "heading": "Research & publications"
-    },
-    {
       "id": "about",
       "label": "About",
       "heading": "Academic background"
@@ -375,6 +555,11 @@
       "id": "experience",
       "label": "Experience",
       "heading": "Research experience & practice"
+    },
+    {
+      "id": "publications",
+      "label": "Research",
+      "heading": "Research & publications"
     },
     {
       "id": "projects",
