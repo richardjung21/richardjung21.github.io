@@ -1,0 +1,395 @@
+{
+  "profile": {
+    "name": "Seungho Jung",
+    "logo": "seungho.dev",
+    "photo": "assets/prof_pic.jpg",
+    "photo_caption": "Generative models · Computer vision",
+    "site_url": "https://richardjung21.github.io/",
+    "years_dev": "4+",
+    "featured_education": "masters",
+    "publication_name": "Seung Ho Jung"
+  },
+  "metadata": {
+    "description": "{name} — Machine Learning Researcher. Master's research at Sungkyunkwan University in generative models, computer vision, and medical image analysis.",
+    "social_description": "Machine Learning Researcher · SKKU · {published_count} published papers"
+  },
+  "hero": {
+    "eyebrow": "Master’s research · Sungkyunkwan University",
+    "roles": [
+      "Machine Learning Researcher"
+    ],
+    "bio": "My research explores generative models and computer vision for medical image analysis, including adaptation of vision models and learning from clinical images.",
+    "research_interests": [
+      {
+        "title": "Generative models",
+        "description": "Diffusion models and learned visual representations."
+      },
+      {
+        "title": "Computer vision",
+        "description": "Model adaptation, segmentation, and contrastive learning."
+      },
+      {
+        "title": "Medical image analysis",
+        "description": "Ultrasound lesion detection and knee osteoarthritis prediction."
+      }
+    ],
+    "actions": [
+      {
+        "label": "Explore publications",
+        "href": "#publications",
+        "style": "primary"
+      },
+      {
+        "label": "Get in touch",
+        "contact": "Email",
+        "style": "ghost"
+      },
+      {
+        "label": "GitHub",
+        "contact": "GitHub",
+        "style": "text"
+      }
+    ]
+  },
+  "about": {
+    "paragraphs": [
+      "I'm {name}. My master’s research at Sungkyunkwan University’s ECE department and Media System Laboratory (MSL) focuses on generative models, computer vision, and medical image analysis.",
+      "With {publication_summary}, my work spans medical vision models and representation learning. My background in software development supports the implementation of research ideas."
+    ]
+  },
+  "education": [
+    {
+      "id": "masters",
+      "degree": "MS ECE",
+      "school": "SKKU",
+      "period": "2025–Present",
+      "gpa": "4.42",
+      "gpa_max": "4.5"
+    },
+    {
+      "id": "bachelors",
+      "degree": "BS EE",
+      "school": "SKKU",
+      "period": "2019–2025",
+      "gpa": "3.46",
+      "gpa_max": "4.5"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "level": "Native"
+    },
+    {
+      "name": "Korean",
+      "level": "Native"
+    },
+    {
+      "name": "Mandarin",
+      "level": "Conversational"
+    },
+    {
+      "name": "Tagalog",
+      "level": "Conversational"
+    }
+  ],
+  "language_scores": [
+    {
+      "name": "TOEIC",
+      "value": "990",
+      "max": "990"
+    },
+    {
+      "name": "OPIc",
+      "value": "AL",
+      "max": ""
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "accent": false,
+      "items": [
+        "Python",
+        "C++",
+        "Java",
+        "JavaScript"
+      ]
+    },
+    {
+      "category": "ML / AI",
+      "accent": true,
+      "items": [
+        "PyTorch",
+        "OpenCV",
+        "Diffusion Models",
+        "SAM"
+      ]
+    },
+    {
+      "category": "Web",
+      "accent": false,
+      "items": [
+        "Node.js",
+        "Express",
+        "React"
+      ]
+    },
+    {
+      "category": "Tools",
+      "accent": false,
+      "items": [
+        "Git",
+        "Linux",
+        "Arduino"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Graduate Researcher",
+      "organization": "Media System Laboratory (MSL)",
+      "period": "2025 – present",
+      "current": true,
+      "description": "Research on Generative Models and Computer Vision at Sungkyunkwan University. Part of this work is conducted as an outsourced researcher for Crescom, focusing on practical applications of diffusion models and image analysis."
+    },
+    {
+      "role": "Freelance Developer",
+      "organization": "Waterbe",
+      "period": "Freelance",
+      "current": false,
+      "description": "Frontend and backend web development. Contributed across the full stack."
+    },
+    {
+      "role": "Undergraduate Researcher",
+      "organization": "SKKU Media System Laboratory",
+      "period": "2024.02 – 2025.02",
+      "current": false,
+      "description": "12 months of research experience within the university lab."
+    },
+    {
+      "role": "Developer",
+      "organization": "NNS Company",
+      "period": "2021 – 2024",
+      "current": false,
+      "description": "Multiple development projects: NLP natural language classifier (2021), Arduino-based water control system (2023), KNN pest & disease classifier (2023), Node.js/Express website (2023–2024)."
+    },
+    {
+      "role": "Programming Tutor",
+      "organization": "평정 학원",
+      "period": "2022.12 – 2023.02",
+      "current": false,
+      "description": "Taught C++, Java, and Python fundamentals to students."
+    }
+  ],
+  "publications": [
+    {
+      "venue": "ICCRD 2026",
+      "date": "2026-05-12",
+      "title": "Dual-Manifold Alignment Contrastive Learning for Knee Osteoarthritis Prediction",
+      "authors": [
+        "Seung Ho Jung",
+        "Jae Joon Lee",
+        "Jitae Shin"
+      ],
+      "status": "Published",
+      "featured": true
+    },
+    {
+      "venue": "ICISPC 2026",
+      "date": "2026-07-12",
+      "title": "Efficient Autoencoding with Quadtree-based Visual Transformer Encoder",
+      "authors": [
+        "Seung Ho Jung",
+        "Jitae Shin"
+      ],
+      "status": "Accepted"
+    },
+    {
+      "venue": "ECML PKDD 2026",
+      "date": "2026",
+      "title": "Probabilistic Dynamic Causal Graphs for Root Cause Analysis with Distributional Forecasting",
+      "authors": [
+        "Hyunmin Kong",
+        "Chunsoo Ahn",
+        "Seung Ho Jung",
+        "Seung Yeol Yoo",
+        "Donghwi Shin",
+        "Jitae Shin"
+      ],
+      "status": "Accepted"
+    },
+    {
+      "venue": "ITC-CSCC 2025",
+      "date": "2025-07-07",
+      "title": "Medical SAM Adapter++: Adaptive Normalization with Domain Interpretation for Better Adaptation",
+      "authors": [
+        "Seung Ho Jung",
+        "Jae Joon Lee",
+        "Jitae Shin"
+      ],
+      "status": "Published"
+    },
+    {
+      "venue": "Sensors 2024",
+      "date": "2024-09-21",
+      "title": "Breast Lesion Detection for Ultrasound Images Using MaskFormer",
+      "authors": [
+        "Aashna Anand",
+        "Seung Ho Jung",
+        "Sukhan Lee"
+      ],
+      "status": "Published"
+    },
+    {
+      "venue": "Upcoming",
+      "date": "",
+      "title": "Upcoming Publication",
+      "authors": [
+        "Seung Ho Jung"
+      ],
+      "status": "In Progress"
+    }
+  ],
+  "projects": [
+    {
+      "year": "2024",
+      "title": "Next-Generation Functional Desk",
+      "description": "A desk integrating wireless power transmission and handwritten text recognition.",
+      "tags": [
+        "Arduino",
+        "CNN",
+        "OCR",
+        "Python",
+        "Wireless Charging"
+      ],
+      "details": [
+        {
+          "label": "Application",
+          "text": "Wireless power transmission and reception integrated into a functional desk."
+        },
+        {
+          "label": "Implementation",
+          "text": "A CNN-based OCR model converts handwritten letters to machine text."
+        }
+      ]
+    },
+    {
+      "year": "2023",
+      "title": "KNN Pest Disease Classifier",
+      "description": "Image classification for agricultural pests and plant diseases, developed for NNS.",
+      "tags": [
+        "Python",
+        "KNN",
+        "OpenCV"
+      ],
+      "details": [
+        {
+          "label": "Application",
+          "text": "Identify plant diseases from images."
+        },
+        {
+          "label": "Implementation",
+          "text": "K-Nearest Neighbors classification using Python and OpenCV."
+        }
+      ]
+    },
+    {
+      "year": "2021",
+      "title": "NLP Natural Language Classifier",
+      "description": "A natural language classification system developed for NNS Company.",
+      "tags": [
+        "Python",
+        "NLP"
+      ],
+      "details": [
+        {
+          "label": "Application",
+          "text": "Categorize text input."
+        },
+        {
+          "label": "Implementation",
+          "text": "Natural language processing techniques implemented in Python."
+        }
+      ]
+    },
+    {
+      "year": "2023",
+      "title": "Arduino Water Control System",
+      "description": "An automated water control system developed for NNS Company.",
+      "tags": [
+        "Arduino",
+        "C++"
+      ],
+      "details": [
+        {
+          "label": "Application",
+          "text": "Automate water control."
+        },
+        {
+          "label": "Implementation",
+          "text": "Arduino sensors and actuators, programmed in C++."
+        }
+      ]
+    }
+  ],
+  "contact": {
+    "description": "Interested in discussing research, collaboration, or opportunities in machine learning and medical image analysis? Get in touch.",
+    "links": [
+      {
+        "label": "Email",
+        "value": "richardjung@g.skku.edu",
+        "url_prefix": "mailto:",
+        "icon": "✉"
+      },
+      {
+        "label": "GitHub",
+        "value": "richardjung21",
+        "url_prefix": "https://github.com/",
+        "icon": "↗"
+      },
+      {
+        "label": "LinkedIn",
+        "value": "richardjung21",
+        "url_prefix": "https://www.linkedin.com/in/",
+        "icon": "in"
+      }
+    ]
+  },
+  "footer": {
+    "year": "2025",
+    "credit": "Built with care"
+  },
+  "sections": [
+    {
+      "id": "publications",
+      "label": "Research",
+      "heading": "Research & publications"
+    },
+    {
+      "id": "about",
+      "label": "About",
+      "heading": "Academic background"
+    },
+    {
+      "id": "experience",
+      "label": "Experience",
+      "heading": "Research experience & practice"
+    },
+    {
+      "id": "projects",
+      "label": "Projects",
+      "heading": "Supporting engineering work"
+    },
+    {
+      "id": "skills",
+      "label": "Skills",
+      "heading": "Methods & tools"
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "heading": "Let’s talk research."
+    }
+  ]
+}

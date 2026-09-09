@@ -1,0 +1,18 @@
+      <section id="hero" aria-labelledby="hero-heading">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <p class="hero-eyebrow">${eyebrow}</p>
+            <h1 class="hero-name" id="hero-heading">${name}</h1>
+            <p class="hero-role">${roles}</p>
+            <p class="hero-education">${education_summary}</p>
+            <p class="hero-bio">${hero_bio}</p>
+            <div class="hero-actions">${hero_actions}</div>
+          </div>
+          <figure class="hero-visual">
+            <div class="hero-photo-frame"><img src="${photo}" alt="${name}" class="hero-photo" fetchpriority="high" /></div>
+            <figcaption><span>${name}</span><span>${photo_caption}</span></figcaption>
+          </figure>
+        </div>
+        <div class="hero-bottom"><h2 class="topics-label">Research interests</h2><div class="research-topics" aria-label="Research interests">${research_topics}</div></div>
+        <a class="cover-scroll" href="${first_section_href}">Scroll to explore <span aria-hidden="true">↓</span></a>
+      </section>
