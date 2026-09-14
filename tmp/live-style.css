@@ -123,8 +123,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .pub-group-count { color: var(--muted); font: 400 .75rem/1.7 var(--mono); }
 .pub-author-position { margin-left: 12px; color: var(--muted); font-size: .8125rem; }
 .paper-overview { margin-top: 12px; }
-.paper-overview, .paper-step, .paper-result { min-width: 0; }
-.paper-takeaway, .paper-step, .paper-result, .paper-context, .paper-note, .paper-figure figcaption { overflow-wrap: anywhere; }
 .paper-takeaway { font-size: 1rem; line-height: 1.6; margin-top: 5px; max-width: 65ch; }
 .paper-method { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; list-style: none; padding: 0; margin: 20px 0; }
 .paper-step { position: relative; padding: 12px; border: 1px solid var(--line); border-radius: 6px; background: white; font-size: .8125rem; line-height: 1.5; }

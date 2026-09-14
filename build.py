@@ -1,5 +1,6 @@
 """Generate the static portfolio: python build.py (Python 3.9+, no packages)."""
 import argparse
+import hashlib
 import json
 import re
 from datetime import date
@@ -65,6 +66,16 @@ def sorted_publications(papers):
 
 def e(value):
     return escape(str(value), quote=True)
+
+
+def versioned_asset(path):
+    """Refresh browser caches when a stylesheet or script changes.
+
+    Normalize line endings so builds agree across Windows and Unix checkouts.
+    """
+    content = (ROOT / path).read_bytes().replace(b'\r\n', b'\n')
+    version = hashlib.sha256(content).hexdigest()[:12]
+    return f'{path}?v={version}'
 
 
 def tag(name, css, content, **attrs):
@@ -212,6 +223,14 @@ def build_context(data):
     if featured is None:
         raise ValueError('profile.featured_education must match an education id')
     context = {key: e(profile[key]) for key in ('name', 'logo', 'photo', 'site_url')}
+    for key, path in {
+        'style_url': 'style.css',
+        'script_url': 'script.js',
+        'lightbox_config_url': 'lightbox.js',
+        'lightbox_style_url': 'assets/vendor/lightbox2/dist/css/lightbox.css',
+        'lightbox_script_url': 'assets/vendor/lightbox2/dist/js/lightbox-plus-jquery.min.js',
+    }.items():
+        context[key] = e(versioned_asset(path))
     context.update(description=copy(data['metadata']['description']),
                    social_description=copy(data['metadata']['social_description']),
                    social_image=e(urljoin(profile['site_url'], profile['photo'])),

@@ -136,6 +136,12 @@ python -m unittest discover -s tests
 node --test tests/navigation.test.cjs tests/lightbox.test.cjs
 ```
 
+The builder adds a content hash to every local CSS and JavaScript URL. Whenever
+one of those files changes, run `python build.py` and commit the rebuilt HTML
+alongside it. Browsers then request the new asset URL instead of reusing an old
+cached version. Hashes are stable across Windows and Unix line endings.
+`--check` also detects HTML that has not been rebuilt after a CSS or JS edit.
+
 The researcher profile uses DM Sans and JetBrains Mono from Google Fonts, with
 system sans-serif/monospace fallbacks. Lightbox2 includes its bundled jQuery; all JavaScript is served locally.
 `hero.research_interests` controls the research-area summaries. Each entry can be

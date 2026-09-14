@@ -61,6 +61,9 @@ class PageTests(unittest.TestCase):
             shutil.copy2(ROOT/'build.py', root/'build.py')
             shutil.copy2(ROOT/'content.json', root/'content.json')
             shutil.copytree(ROOT/'templates', root/'templates')
+            for name in ('style.css', 'script.js', 'lightbox.js'):
+                shutil.copy2(ROOT/name, root/name)
+            shutil.copytree(ROOT/'assets/vendor', root/'assets/vendor')
             built = subprocess.run([sys.executable, '-B', str(root/'build.py')], capture_output=True, text=True)
             self.assertEqual(built.returncode, 0, built.stderr)
             (root/'contact.html').write_text('Stale page', encoding='utf-8')

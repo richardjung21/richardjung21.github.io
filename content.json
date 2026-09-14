@@ -16,9 +16,9 @@
   "hero": {
     "eyebrow": "Master’s research · Sungkyunkwan University",
     "roles": [
-      "Machine Learning Researcher"
+      "Medical AI Researcher"
     ],
-    "bio": "My research explores generative models and computer vision for medical image analysis, including adaptation of vision models and learning from clinical images.",
+    "bio": "Researcher focusing in domain-specific tasks, mainly in Medical AI, for more studies that have real-world applicability without increasing hardware requirement costs.",
     "research_interests": [
       {
         "title": "Generative models",
@@ -30,7 +30,7 @@
       },
       {
         "title": "Medical image analysis",
-        "description": "Ultrasound lesion detection and knee osteoarthritis prediction."
+        "description": "Forecasting and image analysis for aiding radiologists."
       }
     ],
     "actions": [
@@ -41,7 +41,7 @@
       },
       {
         "label": "Get in touch",
-        "contact": "Email",
+        "href": "#contact",
         "style": "ghost"
       },
       {
@@ -53,8 +53,8 @@
   },
   "about": {
     "paragraphs": [
-      "I'm {name}. My master’s research at Sungkyunkwan University’s ECE department and Media System Laboratory (MSL) focuses on generative models, computer vision, and medical image analysis.",
-      "With {publication_summary}, my work spans medical vision models and representation learning. My background in software development supports the implementation of research ideas."
+      "I'm {name}. My master's research at Sungkyunkwan University's ECE department and Media System Laboratory (MSL) focuses on generative models, computer vision, and medical image analysis.",
+      "With {publication_summary}, my work spans from medical vision models and representation learning to industrial applications. My background in software development supports the implementation of research ideas."
     ]
   },
   "education": [
@@ -519,7 +519,7 @@
     }
   ],
   "contact": {
-    "description": "Interested in discussing research, collaboration, or opportunities in machine learning and medical image analysis? Get in touch.",
+    "description": "Interested in discussing research, collaboration, or opportunities in machine learning and medical image analysis.",
     "links": [
       {
         "label": "Email",
@@ -574,7 +574,7 @@
     {
       "id": "contact",
       "label": "Contact",
-      "heading": "Let’s talk research."
+      "heading": "Contact me."
     }
   ]
 }
