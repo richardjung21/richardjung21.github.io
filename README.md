@@ -205,3 +205,33 @@ The initial summaries were checked against the supplied manuscripts. Figures liv
 in `assets/research/`; extraction locations and metadata corrections are recorded
 in `assets/research/README.md`. Updating ordinary summary text does not require
 PDF tools or any new build dependency.
+
+## English and Korean
+
+`index.html` is the English portfolio; `index.ko.html` is the Korean version.
+The fixed language switch stays in the bottom left on desktop and mobile.
+Selecting a language keeps the currently visible section. Both versions work
+without JavaScript; section preservation uses JavaScript.
+
+Both versions are generated from `content.json`. The existing top-level fields
+contain the English copy and shared facts. `translations.ko` contains Korean
+field overrides with the same section structure, plus `ui` for interface labels.
+For example, edit `hero.bio` for English and `translations.ko.hero.bio` for Korean.
+Edit the MA-BBDM Korean summary at
+`translations.ko.publications.ma-bbdm.overview.takeaway`.
+
+Collections use stable `id` values: `translations.ko.publications` and
+`translations.ko.projects` are objects keyed by the corresponding item's `id`.
+Reordering, adding, or removing an English record updates both pages; add Korean
+field overrides under the same ID when adding translated copy. Fields without
+an override inherit the shared content. Dates, statuses, author lists, image
+paths, and numerical results stay in their original records. Publication titles
+and author bylines retain their original spelling, as do source figures.
+`localization.py` formats Korean UI labels, dates, and computed counts.
+Run `python -B build.py` to rebuild both versions and compatibility redirects.
+
+
+Projects can include a `figure` object (`src`, `width`, `height`, `alt`, `caption`)
+with shared image paths and Korean `alt`/`caption` overrides under
+`translations.ko.projects.<id>.figure`. Project details and images are collapsed
+by default; clicking the image or "Enlarge figure" opens its individual viewer.

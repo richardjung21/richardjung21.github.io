@@ -22,38 +22,46 @@
     "research_interests": [
       {
         "title": "Generative models",
-        "description": "Diffusion models and learned visual representations."
+        "description": "Diffusion models and learned visual representations.",
+        "id": "generative"
       },
       {
         "title": "Computer vision",
-        "description": "Model adaptation, segmentation, and contrastive learning."
+        "description": "Model adaptation, segmentation, and contrastive learning.",
+        "id": "vision"
       },
       {
         "title": "Medical image analysis",
-        "description": "Image to image translation and image forecasting for radiological applications."
+        "description": "Image to image translation and image forecasting for radiological applications.",
+        "id": "medical"
       },
       {
         "title": "Time-series data analysis",
-        "description": "Patterns and data analysis between different timepoints."
+        "description": "Patterns and data analysis between different timepoints.",
+        "id": "time-series"
       }
     ],
     "actions": [
       {
         "label": "Explore publications",
         "href": "#publications",
-        "style": "primary"
+        "style": "primary",
+        "id": "publications"
       },
       {
         "label": "Get in touch",
         "href": "#contact",
-        "style": "ghost"
+        "style": "ghost",
+        "id": "contact"
       },
       {
         "label": "GitHub",
         "contact": "GitHub",
-        "style": "text"
+        "style": "text",
+        "id": "github"
       }
-    ]
+    ],
+    "education_label": ""
   },
   "about": {
     "paragraphs": [
@@ -65,7 +73,7 @@
   "education": [
     {
       "id": "masters",
-      "degree": "MS ECE",
+      "degree": "MS Electrical and Computer Engineering",
       "school": "SKKU",
       "period": "2025–Present",
       "gpa": "4.42",
@@ -73,7 +81,7 @@
     },
     {
       "id": "bachelors",
-      "degree": "BS EE",
+      "degree": "BS Electrical and Electronic Engineering",
       "school": "SKKU",
       "period": "2019–2025",
       "gpa": "3.46",
@@ -83,19 +91,23 @@
   "languages": [
     {
       "name": "English",
-      "level": "Native"
+      "level": "Native",
+      "id": "en"
     },
     {
       "name": "Korean",
-      "level": "Native"
+      "level": "Native",
+      "id": "ko"
     },
     {
       "name": "Mandarin",
-      "level": "Conversational"
+      "level": "Conversational",
+      "id": "zh"
     },
     {
       "name": "Tagalog",
-      "level": "Conversational"
+      "level": "Conversational",
+      "id": "tl"
     }
   ],
   "language_scores": [
@@ -119,7 +131,8 @@
         "C++",
         "Java",
         "JavaScript"
-      ]
+      ],
+      "id": "languages"
     },
     {
       "category": "ML / AI",
@@ -129,7 +142,8 @@
         "OpenCV",
         "Diffusion Models",
         "SAM"
-      ]
+      ],
+      "id": "ml-ai"
     },
     {
       "category": "Web",
@@ -138,7 +152,8 @@
         "Node.js",
         "Express",
         "React"
-      ]
+      ],
+      "id": "web"
     },
     {
       "category": "Tools",
@@ -147,7 +162,8 @@
         "Git",
         "Linux",
         "Arduino"
-      ]
+      ],
+      "id": "tools"
     }
   ],
   "experience": [
@@ -156,35 +172,40 @@
       "organization": "Media System Laboratory (MSL)",
       "period": "2025 – present",
       "current": true,
-      "description": "Research on Generative Models and Computer Vision at Sungkyunkwan University. Part of this work is conducted as an outsourced researcher for Crescom, focusing on practical applications of diffusion models and image analysis."
+      "description": "Research on Generative Models and Computer Vision at Sungkyunkwan University. Part of this work is conducted as an outsourced researcher for Crescom, focusing on practical applications of diffusion models and image analysis.",
+      "id": "graduate-research"
     },
     {
       "role": "Frontend/Backend Developer",
       "organization": "Waterbe",
       "period": "2023.11 – 2024.05",
       "current": false,
-      "description": "Frontend and backend web development for Waterbe's advertisement tracking. Contributed across the full stack."
+      "description": "Frontend and backend web development for Waterbe's advertisement tracking. Contributed across the full stack.",
+      "id": "waterbe"
     },
     {
       "role": "Undergraduate Researcher",
       "organization": "SKKU Media System Laboratory",
       "period": "2024.02 – 2025.02",
       "current": false,
-      "description": "12 months of research experience within the university lab."
+      "description": "12 months of research experience within the university lab.",
+      "id": "undergraduate-research"
     },
     {
       "role": "Developer",
       "organization": "NNS Company",
       "period": "2021 – 2024",
       "current": false,
-      "description": "Multiple development projects: NLP natural language classifier (2021), Arduino-based water control system (2023), KNN pest & disease classifier (2023), Node.js/Express website (2023–2024)."
+      "description": "Multiple development projects: NLP natural language classifier (2021), Arduino-based water control system (2023), KNN pest & disease classifier (2023), Node.js/Express website (2023–2024).",
+      "id": "nns"
     },
     {
       "role": "Programming Tutor",
       "organization": "평정 학원",
       "period": "2022.12 – 2023.02",
       "current": false,
-      "description": "Taught C++, Java, and Python fundamentals to students."
+      "description": "Taught C++, Java, and Python fundamentals to students.",
+      "id": "tutoring"
     }
   ],
   "publications": [
@@ -208,11 +229,13 @@
         "results": [
           {
             "label": "Progression-risk AUC",
-            "value": "0.7638"
+            "value": "0.7638",
+            "id": "progression-auc"
           },
           {
             "label": "Prediction horizon",
-            "value": "48 months"
+            "value": "48 months",
+            "id": "horizon"
           }
         ],
         "context": "OAI cohort of 4,796 image pairs with Site D held out for validation/test. Compared baseline AUC: 0.7289 (Table I, p. 4).",
@@ -232,7 +255,8 @@
           "alt": "A baseline X-ray passes through a shared encoder to current and future grade heads and separate latent projections, followed by dual-manifold alignment.",
           "caption": "Figure 2, p. 3. DuMA-CLR architecture from the ICCRD manuscript."
         }
-      }
+      },
+      "id": "duma-clr"
     },
     {
       "venue": "ICISPC 2026",
@@ -255,11 +279,13 @@
         "results": [
           {
             "label": "Compute vs. dense ViT-B",
-            "value": "17.5% less"
+            "value": "17.5% less",
+            "id": "compute"
           },
           {
             "label": "Reconstruction PSNR",
-            "value": "29.60 dB"
+            "value": "29.60 dB",
+            "id": "psnr"
           }
         ],
         "context": "STL-10 benchmark: 36.21 vs. 43.88 GFLOPS; PSNR 29.60 vs. 34.03 dB for dense ViT-B (Table 1, p. 8).",
@@ -282,7 +308,8 @@
           "alt": "Five-column reconstruction comparison with quadtree patches, ground truth, FVQ, SoftVQ and the proposed method; red boxes and enlarged insets compare details around the cat eye.",
           "caption": "Author-supplied qualitative comparison: quadtree allocation, ground truth, FVQ, SoftVQ and the proposed method. Red insets show magnified reconstruction detail."
         }
-      }
+      },
+      "id": "quadtree"
     },
     {
       "venue": "ECML PKDD 2026",
@@ -307,11 +334,13 @@
         "results": [
           {
             "label": "MSDS root-cause AC@1",
-            "value": "0.827"
+            "value": "0.827",
+            "id": "msds-ac1"
           },
           {
             "label": "SWaT root-cause AC@3",
-            "value": "0.517"
+            "value": "0.517",
+            "id": "swat-ac3"
           }
         ],
         "context": "Mean AC@K on industrial benchmarks: MSDS AC@1 = 0.827 +/- 0.102; SWaT AC@3 = 0.517 +/- 0.037 (Table 3, p. 12).",
@@ -334,7 +363,8 @@
           "caption": "Figure 1, p. 4. Probabilistic causal discovery and root-cause scoring from the ECML PKDD manuscript."
         }
       },
-      "author_position": 2
+      "author_position": 2,
+      "id": "causal-graphs"
     },
     {
       "venue": "ITC-CSCC 2025",
@@ -356,11 +386,13 @@
         "results": [
           {
             "label": "OAI Dice, full model",
-            "value": "66.33%"
+            "value": "66.33%",
+            "id": "dice"
           },
           {
             "label": "Gain over Med-SA",
-            "value": "+3.79 pp"
+            "value": "+3.79 pp",
+            "id": "gain"
           }
         ],
         "context": "Noisy OAI ablation: Dice rises from 62.54% to 66.33%; IoU from 51.04% to 53.61% (Table II, p. 5).",
@@ -380,7 +412,8 @@
           "alt": "Med-SA encoder alongside Med-SA++, which adds a domain interpreter that conditions adaptive layer normalization.",
           "caption": "Figure 2, p. 3. Baseline and proposed encoder from the ITC-CSCC manuscript."
         }
-      }
+      },
+      "id": "med-sa"
     },
     {
       "venue": "Sensors 2024",
@@ -402,11 +435,13 @@
         "results": [
           {
             "label": "Mean average precision",
-            "value": "0.943"
+            "value": "0.943",
+            "id": "map"
           },
           {
             "label": "Malignant-lesion recall",
-            "value": "0.900"
+            "value": "0.900",
+            "id": "recall"
           }
         ],
         "context": "Breast Ultrasound Image Dataset; reported 80/10/10 train/test/validation split. Results from Tables 4 and 5, pp. 12 and 14.",
@@ -429,7 +464,8 @@
           "alt": "Five ultrasound examples above their predicted segmentation masks: normal tissue, two benign cases and two malignant cases.",
           "caption": "Anand, Jung and Lee, Sensors 2024, Figure 3, p. 11 (CC BY 4.0). Figure area extracted; panel labels retained."
         }
-      }
+      },
+      "id": "maskformer"
     },
     {
       "venue": "WACV 2027",
@@ -449,11 +485,13 @@
         "results": [
           {
             "label": "Bone-morphology Dice",
-            "value": "83.124%"
+            "value": "83.124%",
+            "id": "dice"
           },
           {
             "label": "Average surface distance",
-            "value": "2.264 mm"
+            "value": "2.264 mm",
+            "id": "assd"
           }
         ],
         "context": "OAI cohort: 209 knee sides from 107 subjects, split by subject into 131 training, 40 validation and 38 test sides. Test Dice: 83.124 +/- 3.693%; ASSD: 2.264 +/- 0.511 mm (Table 1, p. 6).",
@@ -476,7 +514,8 @@
           "alt": "Two knee X-rays form a pseudo-3D volume, which passes through a VQGAN encoder and manifold projector. PCA Ridge predicts coarse morphology, a 3D Brownian bridge refines patches, and a deprojector and VQGAN decoder reconstruct the bone volume.",
           "caption": "Figure 2, p. 3. MA-BBDM architecture from the WACV 2027 submission: manifold representation learning, coarse PCA Ridge prediction and fine 3D Brownian bridge translation."
         }
-      }
+      },
+      "id": "ma-bbdm"
     },
     {
       "venue": "Upcoming",
@@ -485,29 +524,79 @@
       "authors": [
         "Seung Ho Jung"
       ],
-      "status": "In Progress"
+      "status": "In Progress",
+      "id": "upcoming"
     }
   ],
   "projects": [
     {
       "year": "2024",
       "title": "Next-Generation Functional Desk",
-      "description": "A desk integrating wireless power transmission and handwritten text recognition.",
+      "description": "A wirelessly powered Raspberry Pi scanner that turns paper text into digital text and sends it to a computer.",
       "tags": [
-        "Arduino",
+        "Raspberry Pi",
+        "PyTorch",
         "CNN",
         "OCR",
         "Python",
-        "Wireless Charging"
+        "Wireless Power Transfer",
+        "TCP Sockets"
       ],
       "details": [
         {
-          "label": "Application",
-          "text": "Wireless power transmission and reception integrated into a functional desk."
+          "label": "Hardware",
+          "text": "6.78 MHz wireless power transfer supplies the Raspberry Pi through a battery pack. GPIO connects the scan button, illumination LEDs, and status indicator."
         },
         {
-          "label": "Implementation",
-          "text": "A CNN-based OCR model converts handwritten letters to machine text."
+          "label": "Software",
+          "text": "A PyTorch CNN trained on the Stanford OCR Dataset recognizes text; Python handles capture, preprocessing, and Wi-Fi/TCP delivery to the host computer."
+        },
+        {
+          "label": "Team results",
+          "text": "The four-person capstone poster reports 5 W output and 65% overall efficiency."
+        }
+      ],
+      "id": "functional-desk",
+      "links": [
+        {
+          "label": "Project poster (PDF)",
+          "url": "assets/PowerPoint.pdf"
+        }
+      ],
+      "figure": {
+        "src": "assets/projects/functional-desk.png",
+        "width": 1632,
+        "height": 384,
+        "alt": "Three prototype photos show the scanner box on the desk and close-ups of its button and green status LED, illuminated and unlit.",
+        "caption": "Functional Desk capstone poster: completed scanner enclosure and button/LED interface."
+      },
+      "source": {
+        "file": "assets/PowerPoint.pdf",
+        "pages": [
+          1
+        ],
+        "crop": [
+          306,
+          582,
+          578,
+          646
+        ]
+      }
+    },
+    {
+      "id": "waterbe-website",
+      "year": "2023–2024",
+      "title": "Waterbe Advertisement Tracking Website",
+      "description": "Professional website development for advertisement tracking at Waterbe.",
+      "tags": [
+        "Frontend",
+        "Backend",
+        "Web Development"
+      ],
+      "details": [
+        {
+          "label": "Contribution",
+          "text": "Worked across frontend and backend development from November 2023 to May 2024, contributing across the full stack."
         }
       ]
     },
@@ -529,7 +618,8 @@
           "label": "Implementation",
           "text": "K-Nearest Neighbors classification using Python and OpenCV."
         }
-      ]
+      ],
+      "id": "pest-classifier"
     },
     {
       "year": "2021",
@@ -548,7 +638,8 @@
           "label": "Implementation",
           "text": "Natural language processing techniques implemented in Python."
         }
-      ]
+      ],
+      "id": "nlp-classifier"
     },
     {
       "year": "2023",
@@ -567,7 +658,8 @@
           "label": "Implementation",
           "text": "Arduino sensors and actuators, programmed in C++."
         }
-      ]
+      ],
+      "id": "water-control"
     }
   ],
   "contact": {
@@ -575,21 +667,24 @@
     "links": [
       {
         "label": "Email",
-        "value": "richardjung@g.skku.edu",
+        "value": "richardjung13@gmail.com",
         "url_prefix": "mailto:",
-        "icon": "✉"
+        "icon": "✉",
+        "id": "email"
       },
       {
         "label": "GitHub",
         "value": "richardjung21",
         "url_prefix": "https://github.com/",
-        "icon": "↗"
+        "icon": "↗",
+        "id": "github"
       },
       {
         "label": "LinkedIn",
         "value": "richardjung21",
         "url_prefix": "https://www.linkedin.com/in/",
-        "icon": "in"
+        "icon": "in",
+        "id": "linkedin"
       }
     ]
   },
@@ -628,5 +723,446 @@
       "label": "Contact",
       "heading": "Contact me."
     }
-  ]
+  ],
+  "translations": {
+    "ko": {
+      "profile": {
+        "name": "정승호",
+        "photo_caption": "생성 모델 · 컴퓨터 비전"
+      },
+      "metadata": {
+        "description": "{name} — 머신러닝 연구자. 성균관대학교 석사 과정에서 생성 모델, 컴퓨터 비전, 의료 영상 분석을 연구합니다.",
+        "social_description": "머신러닝 연구자 · 성균관대학교 · 게재 논문 {published_count}편"
+      },
+      "hero": {
+        "eyebrow": "성균관대학교 · 석사 과정",
+        "roles": [
+          "컴퓨터 비전 및 인공지능 연구자"
+        ],
+        "bio": "의료 AI를 중심으로 특정 분야의 문제를 연구합니다. 하드웨어 비용을 늘리지 않으면서 실제 현장에 적용할 수 있는 연구를 지향합니다.",
+        "research_interests": {
+          "generative": {
+            "title": "생성 모델",
+            "description": "확산 모델과 시각 표현 학습을 연구합니다."
+          },
+          "vision": {
+            "title": "컴퓨터 비전",
+            "description": "모델 적응, 영상 분할, 대조 학습을 연구합니다."
+          },
+          "medical": {
+            "title": "의료 영상 분석",
+            "description": "영상의학 분야를 위한 영상 간 변환과 미래 영상 예측을 연구합니다."
+          },
+          "time-series": {
+            "title": "시계열 데이터 분석",
+            "description": "서로 다른 시점의 패턴과 데이터 관계를 분석합니다."
+          }
+        },
+        "actions": {
+          "publications": {
+            "label": "논문 살펴보기"
+          },
+          "contact": {
+            "label": "연락하기"
+          }
+        },
+        "education_label": "전자전기컴퓨터공학과"
+      },
+      "about": {
+        "paragraphs": [
+          "안녕하세요, {name}입니다. 성균관대학교 전자전기컴퓨터공학과 미디어시스템연구실(MSL)에서 석사 과정으로 생성 모델, 컴퓨터 비전, 의료 영상 분석을 연구하고 있습니다.",
+          "{publication_summary}의 연구 성과를 바탕으로 의료 영상 모델과 표현 학습부터 산업 분야의 응용까지 연구하고 있습니다. 소프트웨어 개발 경험을 바탕으로 연구 아이디어를 실제 시스템으로 구현합니다.",
+          "4년 이상의 개발 경험이 있으며, NNS와 관련된 여러 웹 개발 프로젝트와 머신러닝 시스템 설계를 수행했습니다."
+        ]
+      },
+      "education": {
+        "masters": {
+          "degree": "전자전기컴퓨터공학 석사 과정",
+          "school": "성균관대학교",
+          "period": "2025–현재"
+        },
+        "bachelors": {
+          "degree": "전자전기공학부 학사",
+          "school": "성균관대학교"
+        }
+      },
+      "languages": {
+        "en": {
+          "name": "영어",
+          "level": "원어민 수준"
+        },
+        "ko": {
+          "name": "한국어",
+          "level": "원어민 수준"
+        },
+        "zh": {
+          "name": "중국어",
+          "level": "일상 회화"
+        },
+        "tl": {
+          "name": "타갈로그어",
+          "level": "일상 회화"
+        }
+      },
+      "skills": {
+        "languages": {
+          "category": "언어"
+        },
+        "ml-ai": {
+          "items": [
+            "PyTorch",
+            "OpenCV",
+            "확산 모델",
+            "SAM"
+          ]
+        },
+        "web": {
+          "category": "웹 개발"
+        },
+        "tools": {
+          "category": "도구"
+        }
+      },
+      "experience": {
+        "graduate-research": {
+          "role": "석사 연구원",
+          "organization": "미디어시스템연구실(MSL)",
+          "period": "2025 – 현재",
+          "description": "성균관대학교에서 생성 모델과 컴퓨터 비전을 연구합니다. 연구의 일부는 크레스콤의 위탁 연구원으로 수행하며, 확산 모델과 영상 분석의 실용적인 응용에 집중하고 있습니다."
+        },
+        "waterbe": {
+          "role": "프론트엔드·백엔드 개발자",
+          "description": "Waterbe의 광고 추적 서비스를 위한 프론트엔드 및 백엔드를 개발하며, 전체 웹 개발 과정에 참여했습니다."
+        },
+        "undergraduate-research": {
+          "role": "학부 연구원",
+          "organization": "성균관대학교 미디어시스템연구실",
+          "description": "대학 연구실에서 12개월 동안 학부 연구원으로 연구를 수행했습니다."
+        },
+        "nns": {
+          "role": "개발자",
+          "description": "NLP 자연어 분류기(2021), Arduino 기반 물 제어 시스템(2023), KNN 병해충 분류기(2023), Node.js/Express 웹사이트(2023–2024) 등 여러 프로젝트를 개발했습니다."
+        },
+        "tutoring": {
+          "role": "프로그래밍 강사",
+          "description": "학생들에게 C++, Java, Python의 기초를 가르쳤습니다."
+        }
+      },
+      "publications": {
+        "duma-clr": {
+          "overview": {
+            "takeaway": "환자마다 질환의 진행 경로가 다를 수 있음을 고려하여 4년 후의 무릎 골관절염 진행을 예측합니다.",
+            "method": [
+              "초기 무릎 X-ray 한 장",
+              "현재·미래의 잠재 공간",
+              "안정 상태 정렬 및 진행 상태 분리"
+            ],
+            "results": {
+              "progression-auc": {
+                "label": "질환 진행 위험 AUC"
+              },
+              "horizon": {
+                "label": "예측 기간"
+              }
+            },
+            "context": "OAI 코호트의 영상 쌍 4,796개를 사용하고, Site D를 검증·테스트용으로 분리했습니다. 비교 기준 모델의 AUC는 0.7289입니다(표 I, 4쪽).",
+            "note": "입력은 초기 X-ray 영상이며, 미래의 질환 등급은 학습에만 사용합니다. 결과는 논문에 보고된 OAI 평가를 기준으로 합니다.",
+            "figure": {
+              "alt": "초기 X-ray 영상이 공유 인코더를 거쳐 현재·미래 등급 예측 헤드와 각각의 잠재 투영으로 전달된 후, 이중 매니폴드 정렬을 수행합니다.",
+              "caption": "그림 2, 3쪽. ICCRD 원고의 DuMA-CLR 모델 구조."
+            }
+          }
+        },
+        "quadtree": {
+          "overview": {
+            "takeaway": "단순한 배경에는 영상 토큰을 적게 배분하고, 복원을 위해 조밀한 격자를 다시 구성합니다.",
+            "method": [
+              "엔트로피 기반 쿼드트리 패치",
+              "토큰 수를 줄인 ViT 인코딩",
+              "마스크 토큰으로 격자 복원"
+            ],
+            "results": {
+              "compute": {
+                "label": "조밀한 ViT-B 대비 연산량"
+              },
+              "psnr": {
+                "label": "영상 복원 PSNR"
+              }
+            },
+            "context": "STL-10 벤치마크: 연산량은 36.21 대 43.88 GFLOPS, PSNR은 29.60 대 34.03 dB입니다. 비교 대상은 조밀한 ViT-B입니다(표 1, 8쪽).",
+            "note": "연산량은 감소하지만 조밀한 기준 모델보다 복원 품질이 낮고, 생략된 일부 영역에 시각적 아티팩트가 발생합니다.",
+            "figure": {
+              "alt": "쿼드트리 패치, 정답 영상, FVQ, SoftVQ, 제안 방법의 복원 결과를 다섯 열로 비교합니다. 빨간 상자와 확대 영상으로 고양이 눈 주변의 세부 모습을 비교합니다.",
+              "caption": "저자가 제공한 정성적 비교: 쿼드트리 배분, 정답 영상, FVQ, SoftVQ, 제안 방법. 빨간 확대 영역은 복원의 세부 모습을 보여줍니다."
+            }
+          }
+        },
+        "causal-graphs": {
+          "overview": {
+            "takeaway": "시간에 따라 변하고 불확실한 센서 간 관계를 고려하여 이상 관측값의 원인을 추적합니다.",
+            "method": [
+              "동적 인과 그래프 학습",
+              "예측 불확실성 보정",
+              "잔차·구조 편차 기반 원인 순위화"
+            ],
+            "results": {
+              "msds-ac1": {
+                "label": "MSDS 근본 원인 AC@1"
+              },
+              "swat-ac3": {
+                "label": "SWaT 근본 원인 AC@3"
+              }
+            },
+            "context": "산업 벤치마크의 평균 AC@K: MSDS AC@1 = 0.827 +/- 0.102, SWaT AC@3 = 0.517 +/- 0.037입니다(표 3, 12쪽).",
+            "note": "AC@K는 상위 K개 후보에 포함된 근본 원인 변수의 회수율을 측정합니다. 모든 지표에서 최고 성능을 보이는 것은 아니며, SWaT AC@1은 RCG가 더 높습니다.",
+            "figure": {
+              "alt": "센서 시계열로 동적 인과 그래프와 예측 분포를 추정합니다. 예측 오차와 인과 구조 오차를 결합하여 근본 원인의 순위를 매깁니다.",
+              "caption": "그림 1, 4쪽. ECML PKDD 원고의 확률적 인과 관계 추정 및 근본 원인 점수 산출 구조."
+            }
+          }
+        },
+        "med-sa": {
+          "overview": {
+            "takeaway": "영상 단위의 도메인 정보를 활용해 의료 영상 분할에 맞게 SAM의 정규화 과정을 조정합니다.",
+            "method": [
+              "영상 통계 추출",
+              "도메인 정보 해석",
+              "조건부 적응형 정규화"
+            ],
+            "results": {
+              "dice": {
+                "label": "전체 모델의 OAI Dice"
+              },
+              "gain": {
+                "label": "Med-SA 대비 개선"
+              }
+            },
+            "context": "노이즈가 있는 OAI 절제 실험에서 Dice는 62.54%에서 66.33%로, IoU는 51.04%에서 53.61%로 증가했습니다(표 II, 5쪽).",
+            "note": "이 비교는 AdaLN과 도메인 해석기의 효과를 분리하여 평가합니다. 별도의 노이즈 제거 실험은 다른 점수를 보고합니다.",
+            "figure": {
+              "alt": "Med-SA 인코더와 Med-SA++를 비교합니다. Med-SA++는 도메인 해석기를 추가하여 적응형 레이어 정규화에 조건을 제공합니다.",
+              "caption": "그림 2, 3쪽. ITC-CSCC 원고의 기준 인코더 및 제안 인코더."
+            }
+          }
+        },
+        "maskformer": {
+          "overview": {
+            "takeaway": "하나의 초음파 영상 모델에서 유방 병변의 위치와 유형을 함께 예측합니다.",
+            "method": [
+              "초음파 영상 특징 추출",
+              "MaskFormer 기반 마스크 분류",
+              "병변 마스크 및 유형 출력"
+            ],
+            "results": {
+              "map": {
+                "label": "평균 정밀도(mAP)"
+              },
+              "recall": {
+                "label": "악성 병변 재현율"
+              }
+            },
+            "context": "Breast Ultrasound Image Dataset을 사용했으며, 학습·테스트·검증 비율은 80/10/10입니다. 결과는 표 4와 5(12쪽, 14쪽)를 기준으로 합니다.",
+            "note": "작거나 여러 개인 병변, 대비가 낮은 병변의 사례를 포함합니다. 하나의 모델에서 마스크와 정상·양성·악성 유형을 예측합니다.",
+            "figure": {
+              "alt": "다섯 초음파 영상과 각각의 예측 분할 마스크: 정상 조직, 양성 사례 두 개, 악성 사례 두 개.",
+              "caption": "Anand, Jung, Lee, Sensors 2024, 그림 3, 11쪽(CC BY 4.0). 패널 표기를 유지한 채 그림 영역을 추출했습니다."
+            }
+          }
+        },
+        "ma-bbdm": {
+          "overview": {
+            "takeaway": "독립적으로 촬영한 두 장의 X-ray에서 잠재 표현 정렬과 단계별 확산을 통해 3차원 무릎 뼈 형태를 복원합니다.",
+            "method": [
+              "X-ray·뼈 형태의 잠재 표현 정렬",
+              "PCA Ridge로 전체 형태 예측",
+              "Brownian Bridge로 3D 패치 정제"
+            ],
+            "results": {
+              "dice": {
+                "label": "뼈 형태 복원 Dice"
+              },
+              "assd": {
+                "label": "평균 표면 거리"
+              }
+            },
+            "context": "OAI 코호트의 107명에서 얻은 무릎 209개를 대상자 단위로 학습 131개, 검증 40개, 테스트 38개로 분리했습니다. 테스트 Dice는 83.124 +/- 3.693%, ASSD는 2.264 +/- 0.511 mm입니다(표 1, 6쪽).",
+            "note": "MRI에서 추출한 뼈 마스크를 학습 목표로 사용합니다. 추론에는 보정된 카메라 기하 정보나 합성 X-ray 없이 PA·RL X-ray만 사용합니다. 평가는 이 OAI 코호트에 한정됩니다. 적합된 통계적 형상 모델은 표면 오차가 더 작지만 해부학적 변이를 덜 보존합니다(표 2, 7쪽).",
+            "figure": {
+              "alt": "두 무릎 X-ray으로 구성한 유사 3D 볼륨이 VQGAN 인코더와 매니폴드 투영기를 통과합니다. PCA Ridge가 전체 형태를 예측하고 3D Brownian Bridge가 패치를 정제한 뒤, 역투영기와 VQGAN 디코더가 뼈 볼륨을 복원합니다.",
+              "caption": "그림 2, 3쪽. WACV 2027 제출 원고의 MA-BBDM 구조: 매니폴드 표현 학습, PCA Ridge 기반 전체 형태 예측, 3D Brownian Bridge 기반 세부 변환."
+            }
+          }
+        },
+        "upcoming": {
+          "venue": "예정",
+          "title": "진행 중인 연구"
+        }
+      },
+      "projects": {
+        "functional-desk": {
+          "title": "차세대 기능성 책상",
+          "description": "무선 전력으로 작동하는 Raspberry Pi 스캐너입니다. 종이의 글자를 디지털 텍스트로 변환하여 컴퓨터로 전송합니다.",
+          "tags": [
+            "Raspberry Pi",
+            "PyTorch",
+            "CNN",
+            "OCR",
+            "Python",
+            "무선 전력 전송",
+            "TCP 소켓"
+          ],
+          "details": [
+            {
+              "label": "하드웨어",
+              "text": "6.78 MHz 무선 전력 전송으로 보조배터리를 통해 Raspberry Pi에 전력을 공급합니다. 스캔 버튼, 조명 LED, 상태 표시 LED는 GPIO로 연결됩니다."
+            },
+            {
+              "label": "소프트웨어",
+              "text": "Stanford OCR Dataset으로 학습한 PyTorch CNN이 글자를 인식합니다. Python으로 촬영, 전처리, Wi-Fi/TCP를 통한 호스트 컴퓨터로의 전송을 처리합니다."
+            },
+            {
+              "label": "팀 결과",
+              "text": "4인 종합설계 프로젝트 포스터에 보고된 출력 전력은 5 W, 전체 효율은 65%입니다."
+            }
+          ],
+          "links": [
+            {
+              "label": "프로젝트 포스터 (PDF)",
+              "url": "assets/PowerPoint.pdf"
+            }
+          ],
+          "figure": {
+            "alt": "책상 위의 스캐너 박스와 버튼 및 초록색 상태 LED가 켜진 모습과 꺼진 모습을 보여주는 시제품 사진 세 장입니다.",
+            "caption": "기능성 책상 종합설계 포스터: 완성된 스캐너 외함과 버튼·LED 인터페이스."
+          }
+        },
+        "pest-classifier": {
+          "title": "KNN 기반 병해충 분류기",
+          "description": "NNS를 위해 개발한 농업 분야 병해충 영상 분류 시스템입니다.",
+          "details": [
+            {
+              "label": "활용",
+              "text": "영상에서 식물의 질병을 식별합니다."
+            },
+            {
+              "label": "구현",
+              "text": "Python과 OpenCV로 K-최근접 이웃(KNN) 분류기를 구현했습니다."
+            }
+          ]
+        },
+        "nlp-classifier": {
+          "title": "NLP 기반 자연어 분류기",
+          "description": "NNS를 위해 개발한 자연어 분류 시스템입니다.",
+          "details": [
+            {
+              "label": "활용",
+              "text": "입력된 텍스트를 범주별로 분류합니다."
+            },
+            {
+              "label": "구현",
+              "text": "Python으로 자연어 처리 기능을 구현했습니다."
+            }
+          ]
+        },
+        "water-control": {
+          "title": "Arduino 기반 물 제어 시스템",
+          "description": "NNS를 위해 개발한 자동 물 제어 시스템입니다.",
+          "details": [
+            {
+              "label": "활용",
+              "text": "물 제어 과정을 자동화합니다."
+            },
+            {
+              "label": "구현",
+              "text": "Arduino 센서와 액추에이터, C++ 기반 제어 로직을 사용했습니다."
+            }
+          ]
+        },
+        "waterbe-website": {
+          "title": "Waterbe 광고 추적 웹사이트",
+          "description": "Waterbe에서 광고 추적 서비스를 위한 웹사이트를 개발했습니다.",
+          "tags": [
+            "프론트엔드",
+            "백엔드",
+            "웹 개발"
+          ],
+          "details": [
+            {
+              "label": "담당 업무",
+              "text": "2023년 11월부터 2024년 5월까지 프론트엔드와 백엔드 개발에 참여하며 전체 웹 개발 과정에 기여했습니다."
+            }
+          ]
+        }
+      },
+      "contact": {
+        "description": "머신러닝과 의료 영상 분석 분야의 연구, 협업, 채용 기회에 관한 연락을 환영합니다.",
+        "links": {
+          "email": {
+            "label": "이메일"
+          }
+        }
+      },
+      "footer": {
+        "credit": "정성을 담아 제작했습니다"
+      },
+      "sections": {
+        "about": {
+          "label": "소개",
+          "heading": "학력 및 연구 배경"
+        },
+        "experience": {
+          "label": "경력",
+          "heading": "연구 및 실무 경험"
+        },
+        "publications": {
+          "label": "연구",
+          "heading": "연구 및 논문"
+        },
+        "projects": {
+          "label": "프로젝트",
+          "heading": "개발 프로젝트"
+        },
+        "skills": {
+          "label": "기술",
+          "heading": "연구 방법 및 개발 도구"
+        },
+        "contact": {
+          "label": "연락처",
+          "heading": "연락하기"
+        }
+      },
+      "ui": {
+        "Home": "홈",
+        "Skip to content": "본문으로 건너뛰기",
+        "Main navigation": "주 메뉴",
+        "Open navigation": "메뉴 열기",
+        "Close navigation": "메뉴 닫기",
+        "Menu ": "메뉴 ",
+        "Back to top ": "맨 위로 ",
+        "Research interests": "연구 관심 분야",
+        "Scroll to explore ": "아래로 살펴보기 ",
+        "Academic and engineering statistics": "연구 및 개발 통계",
+        "Education": "학력",
+        "Languages": "언어",
+        "Current": "현재",
+        "Publications": "게재 논문",
+        "Years Dev": "개발 경력(년)",
+        "Published": "게재 완료",
+        "Accepted": "게재 승인",
+        "Under Review": "심사 중",
+        "In Progress": "진행 중",
+        "First-author papers": "제1저자 논문",
+        "Second-author papers": "제2저자 논문",
+        "Additional coauthored papers": "기타 공동저자 논문",
+        "At a glance & figure": "연구 요약 및 그림",
+        "At a glance": "연구 요약",
+        "Enlarge figure": "그림 확대",
+        "Method at a glance": "연구 방법 요약",
+        "Choose language": "언어 선택",
+        "Research portfolio": "연구 포트폴리오",
+        "Project details": "프로젝트 상세",
+        "Project details & figure": "프로젝트 상세 및 그림"
+      }
+    }
+  }
 }

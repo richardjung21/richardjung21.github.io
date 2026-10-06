@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const korean = document.documentElement.lang === 'ko';
+  document.querySelectorAll('.language-link').forEach(link => {
+    const destination = link.getAttribute('href');
+    link.addEventListener('click', () => {
+      const active = document.querySelector('.nav-link[aria-current="location"]');
+      link.setAttribute('href', destination + (active?.getAttribute('href') || window.location.hash));
+    });
+  });
   const navbar = document.getElementById('navbar');
   const menuBtn = document.getElementById('menuBtn');
   const navDrawer = document.getElementById('navDrawer');
@@ -9,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function setMenu(open) {
     navDrawer.hidden = !open;
     menuBtn.setAttribute('aria-expanded', String(open));
-    menuBtn.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    menuBtn.setAttribute('aria-label', korean ? (open ? '메뉴 닫기' : '메뉴 열기') : (open ? 'Close navigation' : 'Open navigation'));
     scheduleUpdate();
   }
   function closeMobileMenu() {

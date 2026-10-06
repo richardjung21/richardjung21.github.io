@@ -46,10 +46,10 @@ class PageTests(unittest.TestCase):
     def test_old_page_urls_redirect_to_the_correct_section(self):
         for filename, html in render_site(self.data).items():
             page = Page(html)
-            expected_url = self.data['profile']['site_url']
+            expected_url = self.data['profile']['site_url'] + ('index.ko.html' if filename == 'index.ko.html' else '')
             canonical = next(x for x in page.elements if x['attrs'].get('rel') == 'canonical')
             self.assertEqual(canonical['attrs']['href'], expected_url)
-            if filename != 'index.html':
+            if filename not in ('index.html', 'index.ko.html'):
                 refresh = next(x for x in page.elements if x['attrs'].get('http-equiv') == 'refresh')
                 destination = 'index.html#'+filename.removesuffix('.html')
                 self.assertEqual(refresh['attrs']['content'], '0; url='+destination)
@@ -59,6 +59,7 @@ class PageTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             shutil.copy2(ROOT/'build.py', root/'build.py')
+            shutil.copy2(ROOT/'localization.py', root/'localization.py')
             shutil.copy2(ROOT/'content.json', root/'content.json')
             shutil.copytree(ROOT/'templates', root/'templates')
             for name in ('style.css', 'script.js', 'lightbox.js'):

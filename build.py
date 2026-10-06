@@ -5,6 +5,7 @@ import json
 import re
 from datetime import date
 from html import escape
+from localization import korean_content, korean_html
 from pathlib import Path
 from string import Template
 from urllib.parse import urljoin, urlsplit
@@ -110,6 +111,27 @@ def project_details(item):
     return tag('dl', 'project-details', ''.join(
         tag('div', 'project-detail', tag('dt', '', e(detail['label']))+
             tag('dd', '', e(detail['text']))) for detail in details))
+
+
+def project_overview(item):
+    details = project_details(item)
+    figure = item.get('figure')
+    if not details and not figure:
+        return ''
+    figure_html = ''
+    if figure:
+        figure_html = tag('figure', 'project-figure',
+            tag('a', 'project-image-trigger',
+                f'<img src="{e(safe_url(figure["src"]))}" alt="{e(figure["alt"])}" '
+                f'width="{int(figure["width"])}" height="{int(figure["height"])}" loading="lazy" decoding="async">',
+                href=safe_url(figure['src']), **{'data-lightbox': 'project-'+item['id'],
+                    'data-title': item['title'], 'data-alt': figure['alt'],
+                    'aria-label': 'Enlarge figure: '+item['title']}) +
+            tag('figcaption', '', e(figure['caption'])+' '+
+                tag('a', 'project-full-image', 'Enlarge figure', href=safe_url(figure['src']))))
+    return tag('details', 'project-disclosure',
+        tag('summary', '', 'Project details'+(' &amp; figure' if figure else ''))+
+        figure_html+details)
 
 
 def research_interests(items):
@@ -240,6 +262,7 @@ def build_context(data):
                    hero_bio=copy(data['hero']['bio']),
                    photo_caption=e(profile.get('photo_caption', '')),
                    education_summary=e(f'{featured["degree"]} · {featured["school"]}'),
+                   hero_education=e(data['hero'].get('education_label') or f'{featured["degree"]} · {featured["school"]}'),
                    research_topics=research_interests(data['hero'].get('research_interests', [])),
                    research_counts=e(' · '.join(f'{count} {status.lower()}' for status, count in counts.items() if count)),
                    contact_description=copy(data['contact']['description']))
@@ -276,7 +299,7 @@ def build_context(data):
             tag('p', 'timeline-desc', e(x['description'])))) for x in data['experience'])
     context['publications'] = publication_groups(papers, profile.get('publication_name', profile['name']))
     context['projects'] = '\n'.join(tag('div', 'project-card reveal-item', tag('div', 'project-year', e(x['year']))+
-        tag('h3', 'project-title', e(x['title']))+tag('p', 'project-desc', e(x['description']))+project_details(x)+
+        tag('h3', 'project-title', e(x['title']))+tag('p', 'project-desc', e(x['description']))+project_overview(x)+
         tag('div', 'project-tags', ''.join(span('project-tag', item) for item in x['tags']))+resource_links(x)) for x in data['projects'])
     links = []
     for x in data['contact']['links']:
@@ -298,8 +321,14 @@ def render_page(data, context, page):
         return Template((ROOT/'templates/redirect.html').read_text(encoding='utf-8')).substitute(
             title=e(sections[page]['label']), name=context['name'],
             destination=e('index.html#'+page), canonical=e(data['profile']['site_url']))
+    locale = data.get('_locale', 'en')
+    context['locale'] = locale
+    context['english_url'] = e(data['profile']['site_url'])
+    context['korean_url'] = e(urljoin(data['profile']['site_url'], 'index.ko.html'))
+    context['english_current'] = 'page' if locale == 'en' else 'false'
+    context['korean_current'] = 'page' if locale == 'ko' else 'false'
     context['page_title'] = e(f'{data["profile"]["name"]} — Research portfolio')
-    context['page_url'] = e(data['profile']['site_url'])
+    context['page_url'] = e(urljoin(data['profile']['site_url'], 'index.ko.html') if locale == 'ko' else data['profile']['site_url'])
     context['page_id'] = page
     navigation = [{'id': 'hero', 'label': 'Home'}, *data['sections']]
     context['navigation'] = '\n'.join(tag('a', 'nav-link'+(' active' if s['id'] == 'hero' else ''),
@@ -320,7 +349,11 @@ def render_site(data):
     if len(ids) != len(set(ids)) or set(ids) != set(PAGE_FILES)-{'home'}:
         raise ValueError('sections must contain each supported page id exactly once')
     context = build_context(data)
-    return {PAGE_FILES[page]: render_page(data, context, page) for page in ['home', *ids]}
+    pages = {PAGE_FILES[page]: render_page(data, context, page) for page in ['home', *ids]}
+    korean, ui = korean_content(data)
+    korean['_locale'] = 'ko'
+    pages['index.ko.html'] = korean_html(render(korean), ui)
+    return pages
 
 
 def main():

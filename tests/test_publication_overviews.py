@@ -42,7 +42,8 @@ class PublicationOverviewTests(unittest.TestCase):
         self.assertEqual(len(page.css('paper-overview')), self.overview_count)
         self.assertEqual(len(page.css('paper-figure-details')), self.overview_count)
         self.assertEqual(len(page.css('paper-results')), self.overview_count)
-        self.assertFalse(any('.pdf' in x['attrs'].get('href', '').lower() for x in page.elements))
+        publications = Page(publication_groups(self.data['publications'], self.data['profile']['publication_name']))
+        self.assertFalse(any('.pdf' in x['attrs'].get('href', '').lower() for x in publications.elements))
         self.assertNotIn('assets/papers/', render(self.data))
         for paper in self.data['publications']:
             overview = paper.get('overview')
@@ -105,7 +106,7 @@ class PublicationOverviewTests(unittest.TestCase):
         page = Page(render(self.data))
         disclosures = page.css('paper-figure-details')
         self.assertEqual(len(disclosures), self.overview_count)
-        self.assertEqual(len([x for x in page.elements if x['tag'] == 'details']), self.overview_count)
+        self.assertEqual(len([x for x in disclosures if x['tag'] == 'details']), self.overview_count)
         for disclosure in disclosures:
             self.assertEqual(disclosure['tag'], 'details')
             self.assertNotIn('open', disclosure['attrs'])

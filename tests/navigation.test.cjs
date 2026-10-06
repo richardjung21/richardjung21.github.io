@@ -5,7 +5,7 @@ const { join } = require('node:path');
 const { runInNewContext } = require('node:vm');
 
 function setup({wide = false, reduced = false, scrollY = 0, observerSupport = true,
-  layout = [['hero', 0, 800], ['publications', 800, 1800], ['contact', 1800, 3000]]} = {}) {
+  locale = 'en', layout = [['hero', 0, 800], ['publications', 800, 1800], ['contact', 1800, 3000]]} = {}) {
   function element() {
     const classes = new Set();
     return {
@@ -40,7 +40,11 @@ function setup({wide = false, reduced = false, scrollY = 0, observerSupport = tr
   drawer.contains = target => links.includes(target);
   navbar.contains = target => [navbar, menu, drawer, ...links].includes(target);
   const document = element();
-  document.documentElement = {scrollHeight:3000};
+  document.documentElement = {scrollHeight:3000, lang:locale};
+  window.location = {hash:"#publications"};
+  const languageLink = element();
+  languageLink.attrs.href = locale === "ko" ? "index.html" : "index.ko.html";
+  document.querySelector = () => links.find(link => link.attrs["aria-current"] === "location");
   const nodes = {navbar, menuBtn:menu, navDrawer:drawer, navIndicator:indicator,
     readingProgress:progress,
     ...Object.fromEntries(sections.map(s => [s.id,s]))};
@@ -57,7 +61,7 @@ function setup({wide = false, reduced = false, scrollY = 0, observerSupport = tr
     animations.push(animation);
     return animation;
   };
-  document.querySelectorAll = () => [reveal];
+  document.querySelectorAll = selector => selector === ".language-link" ? [languageLink] : [reveal];
   const observers = [];
   class Observer {
     constructor(callback) { this.callback = callback; this.observed = new Set(); observers.push(this); }
@@ -70,7 +74,7 @@ function setup({wide = false, reduced = false, scrollY = 0, observerSupport = tr
   });
   document.handlers.DOMContentLoaded();
   return {navbar, menu, drawer, links, sections, document, desktop, window, indicator, progress,
-    frames, motion, reveal, animations, observers,
+    frames, motion, reveal, animations, observers, languageLink,
     active() { return links.find(link => link.attrs['aria-current'] === 'location')?.dataset.section; },
     scroll(y) { window.scrollY = y; window.handlers.scroll(); this.flush(); },
     flush() { while (frames.length) frames.shift()(); }};
@@ -230,4 +234,26 @@ test('mobile majority measurements exclude content covered by the sticky header'
   assert.equal(overlap.active(), 'skills');
   overlap.scroll(1632); // Exactly half; Projects occupies more visible space.
   assert.equal(overlap.active(), 'projects');
+});
+
+
+test('language switch preserves the visible section in both directions', () => {
+  for (const locale of ['en', 'ko']) {
+    const state = setup({locale, wide:true});
+    state.scroll(1000);
+    state.languageLink.handlers.click();
+    assert.equal(state.languageLink.attrs.href, (locale === 'ko' ? 'index.html' : 'index.ko.html') + '#publications');
+    state.scroll(0);
+    state.languageLink.handlers.click();
+    assert.equal(state.languageLink.attrs.href, (locale === 'ko' ? 'index.html' : 'index.ko.html') + '#hero');
+  }
+});
+
+test('Korean mobile menu retains translated accessible labels', () => {
+  const {menu} = setup({locale:'ko'});
+  assert.equal(menu.attrs['aria-label'], '메뉴 열기');
+  menu.handlers.click();
+  assert.equal(menu.attrs['aria-label'], '메뉴 닫기');
+  menu.handlers.click();
+  assert.equal(menu.attrs['aria-label'], '메뉴 열기');
 });

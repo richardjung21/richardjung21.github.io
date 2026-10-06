@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   configure();
   motion.addEventListener('change', configure);
-  document.querySelectorAll('.paper-full-image').forEach(link => {
+  document.querySelectorAll('.paper-full-image, .project-full-image').forEach(link => {
     link.addEventListener('click', event => {
       if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
