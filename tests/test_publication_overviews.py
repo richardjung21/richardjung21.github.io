@@ -9,6 +9,7 @@ from test_build import Page
 class PublicationOverviewTests(unittest.TestCase):
     def setUp(self):
         self.data = json.loads((ROOT / 'content.json').read_text(encoding='utf-8'))
+        self.overview_count = sum(bool(p.get('overview')) for p in self.data['publications'])
 
     def test_author_groups_preserve_every_paper_and_date_order(self):
         page = Page(render(self.data))
@@ -38,9 +39,9 @@ class PublicationOverviewTests(unittest.TestCase):
 
     def test_all_supplied_papers_have_summaries_and_local_figures_without_pdf_links(self):
         page = Page(render(self.data))
-        self.assertEqual(len(page.css('paper-overview')), 5)
-        self.assertEqual(len(page.css('paper-figure-details')), 5)
-        self.assertEqual(len(page.css('paper-results')), 5)
+        self.assertEqual(len(page.css('paper-overview')), self.overview_count)
+        self.assertEqual(len(page.css('paper-figure-details')), self.overview_count)
+        self.assertEqual(len(page.css('paper-results')), self.overview_count)
         self.assertFalse(any('.pdf' in x['attrs'].get('href', '').lower() for x in page.elements))
         self.assertNotIn('assets/papers/', render(self.data))
         for paper in self.data['publications']:
@@ -50,7 +51,10 @@ class PublicationOverviewTests(unittest.TestCase):
                 self.assertTrue((ROOT / overview['figure']['src']).is_file())
                 self.assertTrue(overview['figure']['alt'])
                 self.assertEqual(len(overview['method']), 3)
-        self.assertNotIn('At a glance', page.css('pub-card-upcoming')[0]['text'])
+        for paper in self.data['publications']:
+            if not paper.get('overview'):
+                card = next(c for c in page.css('pub-card') if paper['title'] in c['text'])
+                self.assertNotIn('At a glance', card['text'])
 
     def test_summary_edits_are_escaped_and_optional(self):
         paper = self.data['publications'][0]
@@ -59,7 +63,7 @@ class PublicationOverviewTests(unittest.TestCase):
         self.assertTrue(any(x['text'] == '<script> & editable summary' for x in page.css('paper-takeaway')))
         self.assertEqual(len([x for x in page.elements if x['tag'] == 'script']), 3)
         del paper['overview']
-        self.assertEqual(len(Page(render(self.data)).css('paper-overview')), 4)
+        self.assertEqual(len(Page(render(self.data)).css('paper-overview')), self.overview_count - 1)
 
     def test_figure_sources_reject_executable_urls(self):
         self.data['publications'][0]['overview']['figure']['src'] = 'javascript:alert(1)'
@@ -80,7 +84,7 @@ class PublicationOverviewTests(unittest.TestCase):
         self.assertEqual((ROOT/'assets/research/quadtree.png').read_bytes(),
                          (ROOT/'assets/papers/Qualitative_Comparison.png').read_bytes())
         page = Page(render(self.data))
-        self.assertEqual(len(page.css('paper-full-image')), 5)
+        self.assertEqual(len(page.css('paper-full-image')), self.overview_count)
         for paper in self.data['publications']:
             figure = paper.get('overview', {}).get('figure')
             if not figure:
@@ -93,15 +97,15 @@ class PublicationOverviewTests(unittest.TestCase):
         page = Page(render(self.data))
         triggers = page.css('paper-image-trigger')
         groups = [item['attrs']['data-lightbox'] for item in triggers]
-        self.assertEqual(len(groups), 5)
-        self.assertEqual(len(set(groups)), 5)
+        self.assertEqual(len(groups), self.overview_count)
+        self.assertEqual(len(set(groups)), self.overview_count)
         self.assertTrue(all('data-lightbox' not in item['attrs'] for item in page.css('paper-full-image')))
 
     def test_summary_and_figure_share_one_closed_disclosure(self):
         page = Page(render(self.data))
         disclosures = page.css('paper-figure-details')
-        self.assertEqual(len(disclosures), 5)
-        self.assertEqual(len([x for x in page.elements if x['tag'] == 'details']), 5)
+        self.assertEqual(len(disclosures), self.overview_count)
+        self.assertEqual(len([x for x in page.elements if x['tag'] == 'details']), self.overview_count)
         for disclosure in disclosures:
             self.assertEqual(disclosure['tag'], 'details')
             self.assertNotIn('open', disclosure['attrs'])

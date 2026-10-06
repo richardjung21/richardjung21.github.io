@@ -1,6 +1,6 @@
 {
   "profile": {
-    "name": "Seungho Jung",
+    "name": "Seung Ho Jung",
     "logo": "seungho.dev",
     "photo": "assets/prof_pic.jpg",
     "photo_caption": "Generative models · Computer vision",
@@ -16,7 +16,7 @@
   "hero": {
     "eyebrow": "Master’s research · Sungkyunkwan University",
     "roles": [
-      "Medical AI Researcher"
+      "Computer Vision and AI Researcher"
     ],
     "bio": "Researcher focusing in domain-specific tasks, mainly in Medical AI, for more studies that have real-world applicability without increasing hardware requirement costs.",
     "research_interests": [
@@ -30,7 +30,11 @@
       },
       {
         "title": "Medical image analysis",
-        "description": "Forecasting and image analysis for aiding radiologists."
+        "description": "Image to image translation and image forecasting for radiological applications."
+      },
+      {
+        "title": "Time-series data analysis",
+        "description": "Patterns and data analysis between different timepoints."
       }
     ],
     "actions": [
@@ -54,7 +58,8 @@
   "about": {
     "paragraphs": [
       "I'm {name}. My master's research at Sungkyunkwan University's ECE department and Media System Laboratory (MSL) focuses on generative models, computer vision, and medical image analysis.",
-      "With {publication_summary}, my work spans from medical vision models and representation learning to industrial applications. My background in software development supports the implementation of research ideas."
+      "With {publication_summary}, my work spans from medical vision models and representation learning to industrial applications. My background in software development supports the implementation of research ideas.",
+      "I also have more than 4 years of development experience, which includes several web development and architectural design of machine learning systems related with NNS."
     ]
   },
   "education": [
@@ -281,7 +286,7 @@
     },
     {
       "venue": "ECML PKDD 2026",
-      "date": "2026",
+      "date": "2026-08-25",
       "title": "Probabilistic Dynamic Causal Graphs for Root Cause Analysis with Distributional Forecasting",
       "authors": [
         "Hyunmin Kong",
@@ -291,7 +296,7 @@
         "Donghwi Shin",
         "Jitae Shin"
       ],
-      "status": "Accepted",
+      "status": "Published",
       "overview": {
         "takeaway": "Trace anomalous sensor readings back to likely causes while accounting for changing, uncertain relationships.",
         "method": [
@@ -423,6 +428,53 @@
           "height": 1200,
           "alt": "Five ultrasound examples above their predicted segmentation masks: normal tissue, two benign cases and two malignant cases.",
           "caption": "Anand, Jung and Lee, Sensors 2024, Figure 3, p. 11 (CC BY 4.0). Figure area extracted; panel labels retained."
+        }
+      }
+    },
+    {
+      "venue": "WACV 2027",
+      "date": "2027",
+      "title": "Manifold Aligned Brownian Bridge Diffusion Model for Knee Bone Morphology Reconstruction from Biplanar X-ray Radiographs",
+      "authors": [
+        "Seung Ho Jung"
+      ],
+      "status": "Under Review",
+      "overview": {
+        "takeaway": "Reconstruct 3D knee bone morphology from two independently acquired X-rays through aligned latent representations and coarse-to-fine diffusion.",
+        "method": [
+          "Align X-ray and morphology latents",
+          "Predict coarse anatomy with PCA Ridge",
+          "Refine 3D patches with a Brownian bridge"
+        ],
+        "results": [
+          {
+            "label": "Bone-morphology Dice",
+            "value": "83.124%"
+          },
+          {
+            "label": "Average surface distance",
+            "value": "2.264 mm"
+          }
+        ],
+        "context": "OAI cohort: 209 knee sides from 107 subjects, split by subject into 131 training, 40 validation and 38 test sides. Test Dice: 83.124 +/- 3.693%; ASSD: 2.264 +/- 0.511 mm (Table 1, p. 6).",
+        "note": "MRI-derived bone masks provide training targets; inference uses only PA and RL X-rays without calibrated camera geometry or synthetic radiographs. Evaluation is limited to this OAI cohort. A fitted statistical shape model has lower surface error but preserves less anatomical variation (Table 2, p. 7).",
+        "source": {
+          "file": "papers/WACV2027_Paper_411.pdf",
+          "pages": [
+            1,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "figure": {
+          "src": "assets/research/ma-bbdm.png",
+          "width": 3000,
+          "height": 996,
+          "alt": "Two knee X-rays form a pseudo-3D volume, which passes through a VQGAN encoder and manifold projector. PCA Ridge predicts coarse morphology, a 3D Brownian bridge refines patches, and a deprojector and VQGAN decoder reconstruct the bone volume.",
+          "caption": "Figure 2, p. 3. MA-BBDM architecture from the WACV 2027 submission: manifold representation learning, coarse PCA Ridge prediction and fine 3D Brownian bridge translation."
         }
       }
     },

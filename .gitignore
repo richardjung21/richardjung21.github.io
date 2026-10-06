@@ -4,3 +4,4 @@ docs/
 .claude/*
 .gitignore
 server_output.txt
+papers

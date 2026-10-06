@@ -157,6 +157,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .pub-badge { display: inline-block; font-size: .875rem; line-height: 1.4; border-radius: 3px; padding: 3px 8px; margin-top: 10px; }
 .pub-badge.published { color: #28533e; background: #edf5ef; }
 .pub-badge.accepted { color: #285396; background: #edf3ff; }
+.pub-badge.under-review,
 .pub-badge.upcoming { color: #77551d; background: #fbf3e4; }
 .pub-card-upcoming .pub-title { color: var(--muted); }
 

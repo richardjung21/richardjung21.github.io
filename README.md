@@ -56,7 +56,7 @@ appears in the statistics. The GPA scale also comes from that same entry.
 
 Publication counts are computed from the list. The About statistics and social description
 count **Published** papers only. The About summary separately counts **Published**,
-**Accepted**, and **In Progress** papers. Update a paper's `status` to one of those
+**Accepted**, **Under Review**, and **In Progress** papers. Update a paper's `status` to one of those
 exact values to update every summary automatically.
 
 To add a paper, copy an object in `publications` and edit its fields:
@@ -109,7 +109,7 @@ across the page. Author names are independent to preserve publication
 bylines. The copyright year and `years_dev` are explicitly editable values.
 
 The About paragraphs, hero eyebrow/bio, contact description, and metadata support
-`{name}`, `{published_count}`, `{accepted_count}`, `{in_progress_count}`, and
+`{name}`, `{published_count}`, `{accepted_count}`, `{under_review_count}`, `{in_progress_count}`, and
 `{publication_summary}` placeholders. Use `{{` and `}}` for literal braces there.
 
 ## Layout and validation

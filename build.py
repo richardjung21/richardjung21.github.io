@@ -171,7 +171,7 @@ def publication_overview(item):
 
 def publication_card(item, author_name):
     _, date_label = publication_date(item)
-    status = {'In Progress': 'upcoming', 'Accepted': 'accepted', 'Published': 'published'}[item['status']]
+    status = {'In Progress': 'upcoming', 'Under Review': 'under-review', 'Accepted': 'accepted', 'Published': 'published'}[item['status']]
     authors = ', '.join(tag('strong', 'pub-author-self', e(name)) if author_key(name) == author_key(author_name) else e(name)
                         for name in item['authors'])
     position = author_position(item, author_name)
@@ -201,7 +201,7 @@ def build_context(data):
     profile = data['profile']
     papers = sorted_publications(data['publications'])
     counts = {status: sum(p['status'] == status for p in papers)
-              for status in ('Published', 'Accepted', 'In Progress')}
+              for status in ('Published', 'Accepted', 'Under Review', 'In Progress')}
     for paper in papers:
         if paper['status'] not in counts:
             raise ValueError(f'Unknown publication status: {paper["status"]!r}')
@@ -209,10 +209,11 @@ def build_context(data):
     for status, count in counts.items():
         if count:
             noun = 'paper' if count == 1 else 'papers'
-            parts.append(f'{count} {noun} in progress' if status == 'In Progress'
+            parts.append(f'{count} {noun} {status.lower()}' if status in ('In Progress', 'Under Review')
                          else f'{count} {status.lower()} {noun}')
     summary = (', '.join(parts[:-1]) + ' and ' + parts[-1]) if len(parts) > 1 else (parts[0] if parts else 'research underway')
     variables = {'name': profile['name'], 'published_count': counts['Published'],
+                 'under_review_count': counts['Under Review'],
                  'accepted_count': counts['Accepted'], 'in_progress_count': counts['In Progress'],
                  'publication_summary': summary}
 
