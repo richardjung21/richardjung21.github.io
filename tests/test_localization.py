@@ -31,20 +31,20 @@ class LocalizationTests(unittest.TestCase):
         self.assertEqual([x['attrs']['href'] for x in english.css('paper-image-trigger')],
                          [x['attrs']['href'] for x in korean.css('paper-image-trigger')])
         self.assertEqual(korean.css('hero-name')[0]['text'], '정승호')
-        self.assertIn('심사 중 1편', korean.css('publication-summary')[0]['text'])
-        self.assertTrue(any(x['text'] == '심사 중' for x in korean.css('pub-badge')))
+        self.assertNotIn('심사 중', korean.css('publication-summary')[0]['text'])
+        self.assertFalse(any(x['text'] == '심사 중' for x in korean.css('pub-badge')))
         self.assertIn('2026년 8월 25일', [x['text'] for x in korean.css('pub-date')])
         for item in korean.css('paper-takeaway') + korean.css('timeline-desc') + korean.css('project-desc'):
             self.assertRegex(item['text'], '[가-힣]')
 
     def test_shared_status_edits_and_escaping_reach_korean_page(self):
         data = copy.deepcopy(self.data)
-        next(p for p in data['publications'] if p['venue'] == 'WACV 2027')['status'] = 'Accepted'
+        next(p for p in data['publications'] if p['id'] == 'duma-clr')['status'] = 'Accepted'
         data['translations']['ko']['projects']['functional-desk']['description'] = '<script>alert("x")</script> & 새 내용'
-        paper = next(p for p in data['publications'] if p['id'] == 'ma-bbdm')
+        paper = next(p for p in data['publications'] if p['id'] == 'duma-clr')
         paper['overview']['results'][0]['value'] = '85.000%'
         page = Page(render_site(data)['index.ko.html'])
-        self.assertIn('85.000%', page.css('paper-results')[0]['text'])
+        self.assertTrue(any('85.000%' in x['text'] for x in page.css('paper-results')))
         self.assertIn('게재 승인 2편', page.css('publication-summary')[0]['text'])
         self.assertNotIn('심사 중', page.css('publication-summary')[0]['text'])
         self.assertEqual(page.css('project-desc')[0]['text'], '<script>alert("x")</script> & 새 내용')
@@ -54,7 +54,7 @@ class LocalizationTests(unittest.TestCase):
     def test_korean_copy_is_editable_in_content_json_and_survives_reordering(self):
         data = copy.deepcopy(self.data)
         data['translations']['ko']['hero']['bio'] = '한국어 소개 수정'
-        data['translations']['ko']['publications']['ma-bbdm']['overview']['takeaway'] = '한국어 논문 요약 수정'
+        data['translations']['ko']['publications']['quadtree']['overview']['takeaway'] = '한국어 논문 요약 수정'
         # Editing English prose must not discard the corresponding Korean copy.
         data['hero']['bio'] = 'Edited English introduction'
         data['publications'].reverse()
@@ -63,12 +63,13 @@ class LocalizationTests(unittest.TestCase):
         self.assertEqual(korean.css('hero-bio')[0]['text'], '한국어 소개 수정')
         self.assertIn('한국어 논문 요약 수정', [x['text'] for x in korean.css('paper-takeaway')])
         self.assertEqual(Page(pages['index.html']).css('hero-bio')[0]['text'], 'Edited English introduction')
-        data['publications'] = [p for p in data['publications'] if p['id'] != 'ma-bbdm']
+        data['publications'] = [p for p in data['publications'] if p['id'] != 'quadtree']
         self.assertNotIn('한국어 논문 요약 수정', render_site(data)['index.ko.html'])
 
 
     def test_project_image_is_shared_but_caption_is_localized(self):
         pages = render_site(self.data)
+        illustrated = [p for p in self.data['projects'] if p.get('figure')]
         for filename in ('index.html', 'index.ko.html'):
             page = Page(pages[filename])
             disclosures = page.css('project-disclosure')
@@ -77,14 +78,21 @@ class LocalizationTests(unittest.TestCase):
             trigger = page.css('project-image-trigger')[0]
             self.assertEqual(trigger['attrs']['href'], 'assets/projects/functional-desk.png')
             self.assertEqual(trigger['attrs']['data-lightbox'], 'project-functional-desk')
-            self.assertEqual(len(page.css('project-full-image')), 1)
+            self.assertEqual(len(page.css('project-full-image')), len(illustrated))
+            triggers = page.css('project-image-trigger')
+            self.assertEqual([t['attrs']['href'] for t in triggers],
+                             [p['figure']['src'] for p in illustrated])
+            self.assertEqual([t['attrs']['data-lightbox'] for t in triggers],
+                             ['project-' + p['id'] for p in illustrated])
             if filename == 'index.ko.html':
-                self.assertRegex(trigger['attrs']['data-alt'], '[가-힣]')
+                for trigger in triggers:
+                    self.assertRegex(trigger['attrs']['data-alt'], '[가-힣]')
         import struct
+        for item in illustrated:
+            figure = item['figure']
+            self.assertEqual(struct.unpack('>II', (ROOT / figure['src']).read_bytes()[16:24]),
+                             (figure['width'], figure['height']))
         project = next(p for p in self.data['projects'] if p['id'] == 'functional-desk')
-        figure = project['figure']
-        self.assertEqual(struct.unpack('>II', (ROOT / figure['src']).read_bytes()[16:24]),
-                         (figure['width'], figure['height']))
         project['figure']['src'] = 'javascript:alert(1)'
         with self.assertRaisesRegex(ValueError, 'Unsupported link scheme'):
             render_site(self.data)

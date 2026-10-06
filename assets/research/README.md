@@ -1,6 +1,6 @@
 # Research summary sources
 
-Five images are figure-area extracts from the user-supplied PDFs; `quadtree.png`
+Four images are figure-area extracts from the user-supplied PDFs; `quadtree.png`
 is a byte-for-byte copy of the author's replacement PNG. No figure content was
 redrawn or altered. The website presents editable, paraphrased
 summaries, with the study figure available in a native HTML disclosure. It does
@@ -28,11 +28,6 @@ panel labels, with captions supplied as editable HTML text.
 The Sensors article identifies itself as CC BY 4.0; its figure caption includes
 author, journal, year, figure number and license attribution.
 
-The MA-BBDM architecture image (`ma-bbdm.png`) is extracted from
-`papers/WACV2027_Paper_411.pdf`, p. 3, Figure 2, with crop
-`(57, 69, 557, 235)` at 432 DPI (3000 x 996 pixels). The paper is an
-anonymous WACV 2027 submission; its review header is outside the figure crop.
-
 ## Summary verification
 
 - ICISPC: Table 1, p. 8: 36.21 vs. 43.88 GFLOPS (17.5% reduction), with PSNR
@@ -47,12 +42,6 @@ anonymous WACV 2027 submission; its review header is outside the figure crop.
 - ECML PKDD: Table 3, p. 12: MSDS AC@1 0.827 +/- 0.102, SWaT AC@3
   0.517 +/- 0.037. Results are not characterized as winning every metric.
 
-- WACV 2027: Table 1, p. 6: Dice 83.124 +/- 3.693% and ASSD
-  2.264 +/- 0.511 mm on 38 held-out knee sides, using a subject-level split
-  of 209 sides from 107 OAI subjects. MRI-derived masks supply training
-  targets; inference uses two X-rays. Table 2, p. 7, reports lower ASSD
-  for the fitted SSM (2.028 mm), but greater retained variation for MA-BBDM.
-
 ## Metadata corrections
 
 - ICISPC's first page lists Seung Ho Jung, Kyu Hoon Moon, Geonhyeok Lee and
@@ -62,8 +51,3 @@ anonymous WACV 2027 submission; its review header is outside the figure crop.
 - ECML PKDD uses `author_position: 2`, reflecting the author's confirmed
   second-author designation. The manuscript's full printed byline is preserved;
   the confirmed designation takes precedence over its list index for grouping.
-
-- WACV 2027 is listed as Under Review, as confirmed by the portfolio owner. The year-only date comes from its
-  venue label. The provisional byline lists the portfolio owner only; the
-  anonymous PDF does not establish coauthors or author order. Confirm the full
-  byline before treating this as complete publication metadata.

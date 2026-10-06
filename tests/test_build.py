@@ -54,7 +54,6 @@ class BuildTests(unittest.TestCase):
         self.assertIn('GPA 4.37/4.7', page.css('edu-detail')[0]['text'])
 
     def test_publication_status_updates_all_summaries(self):
-        self.data['publications'] = [p for p in self.data['publications'] if p['venue'] != 'WACV 2027']
         next(p for p in self.data['publications'] if p['venue'] == 'ECML PKDD 2026')['status'] = 'Accepted'
         self.data['publications'][-1]['status'] = 'Published'
         page = Page(render(self.data))
@@ -114,7 +113,6 @@ class BuildTests(unittest.TestCase):
             render(self.data)
 
     def test_research_statuses_and_editable_topics(self):
-        self.data['publications'] = [p for p in self.data['publications'] if p['venue'] != 'WACV 2027']
         next(p for p in self.data['publications'] if p['venue'] == 'ECML PKDD 2026')['status'] = 'Accepted'
         self.data['hero']['research_interests'] = ['New research topic']
         self.data['profile']['photo_caption'] = 'Updated caption'

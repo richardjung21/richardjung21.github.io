@@ -217,8 +217,8 @@ Both versions are generated from `content.json`. The existing top-level fields
 contain the English copy and shared facts. `translations.ko` contains Korean
 field overrides with the same section structure, plus `ui` for interface labels.
 For example, edit `hero.bio` for English and `translations.ko.hero.bio` for Korean.
-Edit the MA-BBDM Korean summary at
-`translations.ko.publications.ma-bbdm.overview.takeaway`.
+Edit a Korean paper summary under
+`translations.ko.publications.<paper-id>.overview.takeaway`.
 
 Collections use stable `id` values: `translations.ko.publications` and
 `translations.ko.projects` are objects keyed by the corresponding item's `id`.

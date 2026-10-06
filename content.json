@@ -468,56 +468,6 @@
       "id": "maskformer"
     },
     {
-      "venue": "WACV 2027",
-      "date": "2027",
-      "title": "Manifold Aligned Brownian Bridge Diffusion Model for Knee Bone Morphology Reconstruction from Biplanar X-ray Radiographs",
-      "authors": [
-        "Seung Ho Jung"
-      ],
-      "status": "Under Review",
-      "overview": {
-        "takeaway": "Reconstruct 3D knee bone morphology from two independently acquired X-rays through aligned latent representations and coarse-to-fine diffusion.",
-        "method": [
-          "Align X-ray and morphology latents",
-          "Predict coarse anatomy with PCA Ridge",
-          "Refine 3D patches with a Brownian bridge"
-        ],
-        "results": [
-          {
-            "label": "Bone-morphology Dice",
-            "value": "83.124%",
-            "id": "dice"
-          },
-          {
-            "label": "Average surface distance",
-            "value": "2.264 mm",
-            "id": "assd"
-          }
-        ],
-        "context": "OAI cohort: 209 knee sides from 107 subjects, split by subject into 131 training, 40 validation and 38 test sides. Test Dice: 83.124 +/- 3.693%; ASSD: 2.264 +/- 0.511 mm (Table 1, p. 6).",
-        "note": "MRI-derived bone masks provide training targets; inference uses only PA and RL X-rays without calibrated camera geometry or synthetic radiographs. Evaluation is limited to this OAI cohort. A fitted statistical shape model has lower surface error but preserves less anatomical variation (Table 2, p. 7).",
-        "source": {
-          "file": "papers/WACV2027_Paper_411.pdf",
-          "pages": [
-            1,
-            3,
-            4,
-            5,
-            6,
-            7
-          ]
-        },
-        "figure": {
-          "src": "assets/research/ma-bbdm.png",
-          "width": 3000,
-          "height": 996,
-          "alt": "Two knee X-rays form a pseudo-3D volume, which passes through a VQGAN encoder and manifold projector. PCA Ridge predicts coarse morphology, a 3D Brownian bridge refines patches, and a deprojector and VQGAN decoder reconstruct the bone volume.",
-          "caption": "Figure 2, p. 3. MA-BBDM architecture from the WACV 2027 submission: manifold representation learning, coarse PCA Ridge prediction and fine 3D Brownian bridge translation."
-        }
-      },
-      "id": "ma-bbdm"
-    },
-    {
       "venue": "Upcoming",
       "date": "",
       "title": "Upcoming Publication",
@@ -587,23 +537,45 @@
       "id": "waterbe-website",
       "year": "2023–2024",
       "title": "Waterbe Advertisement Tracking Website",
-      "description": "Professional website development for advertisement tracking at Waterbe.",
+      "description": "A full-stack advertising dashboard for tracking campaigns, influencer activity, channel performance, and monthly client reports at Waterbe.",
       "tags": [
-        "Frontend",
-        "Backend",
-        "Web Development"
+        "React",
+        "Node.js",
+        "Express",
+        "MySQL",
+        "Python",
+        "Chart.js"
       ],
       "details": [
         {
           "label": "Contribution",
-          "text": "Worked across frontend and backend development from November 2023 to May 2024, contributing across the full stack."
+          "text": "Contributed to frontend and backend development from November 2023 to May 2024, connecting client-facing dashboards with campaign data and reporting workflows."
+        },
+        {
+          "label": "Frontend",
+          "text": "React pages organize paid media, influencer activity, and channel management by company and campaign. Chart.js visualizations, performance tables, and date filters support campaign reviews and monthly reports."
+        },
+        {
+          "label": "Backend",
+          "text": "Node.js/Express APIs and MySQL handle company login, campaign records, media and image uploads, report comments, and administrator-controlled editing and visibility."
+        },
+        {
+          "label": "Data integration",
+          "text": "Python collectors retrieve Naver Search Ads and Meta campaign metrics, process campaign and keyword data with pandas, and update MySQL records for dashboard and monthly-report views."
         }
-      ]
+      ],
+      "figure": {
+        "src": "assets/projects/waterbe-login.png",
+        "width": 1440,
+        "height": 900,
+        "alt": "Waterbe login interface with the company logo, a welcome message, and username and password fields.",
+        "caption": "Waterbe login screen, rendered locally from the archived React frontend."
+      }
     },
     {
       "year": "2023",
       "title": "KNN Pest Disease Classifier",
-      "description": "Image classification for agricultural pests and plant diseases, developed for NNS.",
+      "description": "Image classification for agricultural pests and plant diseases, developed for NNS within a broader crop-diagnosis and pesticide recommendation project.",
       "tags": [
         "Python",
         "KNN",
@@ -612,34 +584,69 @@
       "details": [
         {
           "label": "Application",
-          "text": "Identify plant diseases from images."
+          "text": "Identify agricultural pests and plant diseases from crop images as part of a broader service intended to connect farmers with relevant pesticide information."
         },
         {
           "label": "Implementation",
           "text": "K-Nearest Neighbors classification using Python and OpenCV."
+        },
+        {
+          "label": "Project data",
+          "text": "The project archive contains pest and disease photographs, banana-disease examples, Korean and English disease descriptions, symptom keywords, and crop-specific pesticide product lists."
+        },
+        {
+          "label": "Recommendation workflow",
+          "text": "The accompanying design materials describe symptom-keyword extraction, manual keyword review, and linking disease terms to pesticide records. They also outline speech-to-text input and dialect-to-standard-Korean conversion for a chatbot; these are documented design goals rather than verified features of the KNN classifier."
         }
       ],
-      "id": "pest-classifier"
+      "id": "pest-classifier",
+      "figure": {
+        "src": "assets/projects/pest-app.png",
+        "width": 386,
+        "height": 798,
+        "alt": "English-language agricultural mobile app home screen with agrochemical, pre-order, and post-order service options.",
+        "caption": "Existing mobile app screenshot from the agricultural project archive; it illustrates the broader service interface rather than KNN prediction results."
+      }
     },
     {
       "year": "2021",
-      "title": "NLP Natural Language Classifier",
-      "description": "A natural language classification system developed for NNS Company.",
+      "title": "Korean Legal Text Classifier",
+      "description": "A Korean NLP prototype for NNS that maps natural-language incident descriptions to major crime categories and specific offense labels.",
       "tags": [
         "Python",
-        "NLP"
+        "Korean NLP",
+        "soynlp",
+        "KoNLPy",
+        "KR-WordRank",
+        "Selenium",
+        "pandas"
       ],
       "details": [
         {
           "label": "Application",
-          "text": "Categorize text input."
+          "text": "Accepts a Korean incident description and returns matching major crime categories and offense subcategories. The taxonomy covers 19 major groups, including property, traffic, environmental, and labor-related offenses."
         },
         {
-          "label": "Implementation",
-          "text": "Natural language processing techniques implemented in Python."
+          "label": "Data preparation",
+          "text": "Selenium notebooks collect legal-document and Yonhap news text. CSV-based processing organizes articles by crime category; token-frequency comparisons and KR-WordRank experiments help identify category-specific keywords."
+        },
+        {
+          "label": "Classification",
+          "text": "The Python prototype cleans Korean input, tokenizes it with soynlp LTokenizer, and matches tokens against curated CSV keyword dictionaries. Keyword rules can return multiple offense labels, with an other-category fallback when no match is found."
+        },
+        {
+          "label": "Dictionary maintenance",
+          "text": "Supporting scripts add or remove category keywords in CSV dictionaries. Research notebooks also explore KoNLPy tokenizers and TF-IDF representations; the available inference script uses keyword matching."
         }
       ],
-      "id": "nlp-classifier"
+      "id": "nlp-classifier",
+      "figure": {
+        "src": "assets/projects/nlp-search.png",
+        "width": 1760,
+        "height": 1500,
+        "alt": "Korean legal search prototype showing crime-category buttons, incident-description input, keyword examples, and sample category results.",
+        "caption": "Archived legal-text search interface prototype. The displayed text and category results are examples from the original HTML, not a measured classifier output."
+      }
     },
     {
       "year": "2023",
@@ -969,30 +976,6 @@
             }
           }
         },
-        "ma-bbdm": {
-          "overview": {
-            "takeaway": "독립적으로 촬영한 두 장의 X-ray에서 잠재 표현 정렬과 단계별 확산을 통해 3차원 무릎 뼈 형태를 복원합니다.",
-            "method": [
-              "X-ray·뼈 형태의 잠재 표현 정렬",
-              "PCA Ridge로 전체 형태 예측",
-              "Brownian Bridge로 3D 패치 정제"
-            ],
-            "results": {
-              "dice": {
-                "label": "뼈 형태 복원 Dice"
-              },
-              "assd": {
-                "label": "평균 표면 거리"
-              }
-            },
-            "context": "OAI 코호트의 107명에서 얻은 무릎 209개를 대상자 단위로 학습 131개, 검증 40개, 테스트 38개로 분리했습니다. 테스트 Dice는 83.124 +/- 3.693%, ASSD는 2.264 +/- 0.511 mm입니다(표 1, 6쪽).",
-            "note": "MRI에서 추출한 뼈 마스크를 학습 목표로 사용합니다. 추론에는 보정된 카메라 기하 정보나 합성 X-ray 없이 PA·RL X-ray만 사용합니다. 평가는 이 OAI 코호트에 한정됩니다. 적합된 통계적 형상 모델은 표면 오차가 더 작지만 해부학적 변이를 덜 보존합니다(표 2, 7쪽).",
-            "figure": {
-              "alt": "두 무릎 X-ray으로 구성한 유사 3D 볼륨이 VQGAN 인코더와 매니폴드 투영기를 통과합니다. PCA Ridge가 전체 형태를 예측하고 3D Brownian Bridge가 패치를 정제한 뒤, 역투영기와 VQGAN 디코더가 뼈 볼륨을 복원합니다.",
-              "caption": "그림 2, 3쪽. WACV 2027 제출 원고의 MA-BBDM 구조: 매니폴드 표현 학습, PCA Ridge 기반 전체 형태 예측, 3D Brownian Bridge 기반 세부 변환."
-            }
-          }
-        },
         "upcoming": {
           "venue": "예정",
           "title": "진행 중인 연구"
@@ -1038,31 +1021,64 @@
         },
         "pest-classifier": {
           "title": "KNN 기반 병해충 분류기",
-          "description": "NNS를 위해 개발한 농업 분야 병해충 영상 분류 시스템입니다.",
+          "description": "NNS의 작물 진단 및 농약 추천 프로젝트에서 농업 분야 병해충 영상을 분류하는 시스템입니다.",
           "details": [
             {
               "label": "활용",
-              "text": "영상에서 식물의 질병을 식별합니다."
+              "text": "작물 영상에서 병해충을 식별하는 분류기입니다. 농가에 관련 농약 정보를 제공하려는 더 넓은 서비스 구상의 일부입니다."
             },
             {
               "label": "구현",
               "text": "Python과 OpenCV로 K-최근접 이웃(KNN) 분류기를 구현했습니다."
+            },
+            {
+              "label": "프로젝트 자료",
+              "text": "보관된 자료에는 병해충 사진, 바나나 질병 사례, 한국어·영어 병해 설명, 증상 키워드, 작물별 농약 제품 목록이 포함되어 있습니다."
+            },
+            {
+              "label": "추천 흐름",
+              "text": "설계 자료는 증상 키워드 추출과 수동 검토, 병해충 용어와 농약 정보의 연결을 설명합니다. 챗봇용 음성 인식과 사투리의 표준어 변환도 제안하며, 이는 KNN 분류기에서 구현 여부가 확인된 기능이 아닌 문서상의 설계 목표입니다."
             }
-          ]
+          ],
+          "figure": {
+            "alt": "농약, 선주문, 후주문 서비스 메뉴가 있는 영문 농업 모바일 앱 홈 화면입니다.",
+            "caption": "농업 프로젝트 자료에 포함된 기존 모바일 앱 스크린샷입니다. KNN 예측 결과가 아닌 전체 서비스의 화면을 보여줍니다."
+          }
         },
         "nlp-classifier": {
-          "title": "NLP 기반 자연어 분류기",
-          "description": "NNS를 위해 개발한 자연어 분류 시스템입니다.",
+          "title": "한국어 법률 텍스트 분류기",
+          "description": "자연어로 작성된 한국어 사건 설명을 범죄 대분류와 세부 범죄명에 연결하는 NNS용 NLP 프로토타입입니다.",
           "details": [
             {
               "label": "활용",
-              "text": "입력된 텍스트를 범주별로 분류합니다."
+              "text": "한국어 사건 설명을 입력받아 해당하는 범죄 대분류와 세부 범죄명을 반환합니다. 재산범죄, 교통범죄, 환경범죄, 노동범죄 등을 포함한 19개 대분류를 사용합니다."
             },
             {
-              "label": "구현",
-              "text": "Python으로 자연어 처리 기능을 구현했습니다."
+              "label": "데이터 준비",
+              "text": "Selenium 노트북으로 법정문서와 연합뉴스 기사 텍스트를 수집합니다. CSV 기반 처리로 기사를 범죄별로 정리하고, 범주 간 단어 빈도 비교와 KR-WordRank 실험으로 범주별 키워드를 추출합니다."
+            },
+            {
+              "label": "분류 방식",
+              "text": "Python 프로토타입은 한국어 입력을 정제하고 soynlp LTokenizer로 토큰화한 뒤, CSV 키워드 사전과 대조합니다. 키워드 규칙에 따라 여러 범죄명을 반환할 수 있으며 일치하는 항목이 없으면 기타 범주로 분류합니다."
+            },
+            {
+              "label": "사전 관리",
+              "text": "보조 스크립트로 CSV 사전의 범주별 키워드를 추가하거나 제거합니다. 연구 노트북에서는 KoNLPy 토크나이저와 TF-IDF 표현도 탐색했으며, 확인된 추론 스크립트는 키워드 매칭을 사용합니다."
             }
-          ]
+          ],
+          "tags": [
+            "Python",
+            "한국어 NLP",
+            "soynlp",
+            "KoNLPy",
+            "KR-WordRank",
+            "Selenium",
+            "pandas"
+          ],
+          "figure": {
+            "alt": "범죄 유형 버튼, 사건 설명 입력란, 키워드 예시 및 범주별 결과 예시를 보여주는 한국어 법률 검색 프로토타입입니다.",
+            "caption": "보관된 법률 텍스트 검색 화면 프로토타입입니다. 표시된 문구와 범주별 결과는 원본 HTML의 예시이며, 분류기를 실행하여 얻은 결과가 아닙니다."
+          }
         },
         "water-control": {
           "title": "Arduino 기반 물 제어 시스템",
@@ -1080,18 +1096,37 @@
         },
         "waterbe-website": {
           "title": "Waterbe 광고 추적 웹사이트",
-          "description": "Waterbe에서 광고 추적 서비스를 위한 웹사이트를 개발했습니다.",
+          "description": "Waterbe의 캠페인, 인플루언서 활동, 채널 성과 및 월간 고객 보고서를 관리하는 풀스택 광고 대시보드입니다.",
           "tags": [
-            "프론트엔드",
-            "백엔드",
-            "웹 개발"
+            "React",
+            "Node.js",
+            "Express",
+            "MySQL",
+            "Python",
+            "Chart.js"
           ],
           "details": [
             {
               "label": "담당 업무",
-              "text": "2023년 11월부터 2024년 5월까지 프론트엔드와 백엔드 개발에 참여하며 전체 웹 개발 과정에 기여했습니다."
+              "text": "2023년 11월부터 2024년 5월까지 프론트엔드와 백엔드 개발에 참여하며, 고객용 대시보드를 캠페인 데이터 및 보고서 작성 흐름과 연결했습니다."
+            },
+            {
+              "label": "프론트엔드",
+              "text": "React로 회사·캠페인별 유료 매체, 인플루언서 활동, 채널 관리 화면을 구성했습니다. Chart.js 시각화, 성과 표, 날짜 필터로 캠페인 검토와 월간 보고서를 지원합니다."
+            },
+            {
+              "label": "백엔드",
+              "text": "Node.js/Express API와 MySQL로 회사별 로그인, 캠페인 데이터, 매체 및 이미지 업로드, 보고서 의견, 관리자 편집 및 표시 설정을 처리합니다."
+            },
+            {
+              "label": "데이터 연동",
+              "text": "Python 수집기로 Naver Search Ads와 Meta의 캠페인 지표를 가져오고, pandas로 캠페인·키워드 데이터를 처리하여 대시보드와 월간 보고서용 MySQL 데이터를 갱신합니다."
             }
-          ]
+          ],
+          "figure": {
+            "alt": "Waterbe 로고, 환영 문구, 아이디와 비밀번호 입력란이 있는 로그인 화면입니다.",
+            "caption": "보관된 React 프론트엔드를 로컬에서 실행하여 캡처한 Waterbe 로그인 화면입니다."
+          }
         }
       },
       "contact": {
